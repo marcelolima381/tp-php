@@ -24,13 +24,10 @@ Segue abaixo os principais requisitos a serem implementados como primeira versã
 
 3. **Listagem/Busca de talentos (Acesso Empresa):** As empresas, se assim desejarem, poderão fazer a busca na plataforma por potenciais talentos que se encaixem nas suas preferências.
 	* A empresa, ao encontrar um candidato de interesse, poderá selecionar esse candidato na lista para visualiza suas informações. 	
-
 4. **Cadastro de Vagas (Acesso Empresa):** Cadastro de vagas de emprego. As empresas poderão cadastrar vagas de emprego para que os talentos cadastros na plataforma possam manifestar o seu interesse. Uma vaga deverá ter dados como cargo ofertado, salário, local de trabalho, carga horária e descrição das atividades.
 
 5. **Listagem/Busca de Vagas (Acesso Empresa/Interessado):** Tanto as empresas quanto os talentos cadastrados poderão fazer busca de vagas de acordo com seus interesses.
 	* O candidato, ao encontrar uma vaga de interesse, poderá selecionar essa vaga na lista para visualizar seus detalhes. 
-
-6. **Inovação:** A presença de alguma inovação não apresentada nos requisitos anteriores.
 
 É importante ressaltar que as funcionalidades de cadastro deverão ser acompanhados de suas respectivas funcionalidades de alteração e exclusão. Isto é, você deverá fornercer meios para alteração e exclusão das entidades (talentos, empresas e vagas) do sistema.
 
@@ -50,7 +47,7 @@ O trabalho será composto por três entregas totais, sendo duas delas entregas p
 Pontuação 	|Data      | O que é para ser entregue?                        | TAG
 -----------	|----------|---------------------------------------------------|------------------
 2 pontos	|01/07/2016| Prototipagem em HTML das telas do sistema         | Entrega 1
-3 pontos		|15/07/2016| Pelo menos **três** funcionalidades implementadas | Entrega 2
+3 pontos		|15/07/2016| Pelo menos **duas** funcionalidades implementadas | Entrega 2
 N/A		 	|04/08/2016| Entrega Final                                     | Entrega Final
 
 
@@ -60,12 +57,12 @@ As entregas deverão ser marcadas com tags do próprio Git, indicadas na tabela 
 
 A apresentação do trabalho ocorrerá no dia **05/08/2016**. Você deverá apresentar seu trabalho para seus colegas de turma junto de uma **banca de avaliação** que irá avaliar seu trabalho.
 
-A banca de avaliação contará, a princípio, com um especialista no desenvolvimento de software, que irá avaliar principalmente os aspectos internos do sistema (código, estruturação, etc.) e um usuário comum, que irá avaliar principalmente os aspectos externos do sistema (design, usabilidade, etc.).
+A banca de avaliação contará, a princípio, com **um especialista no desenvolvimento de software** que irá avaliar principalmente os aspectos internos do sistema (código, estruturação, etc.) e **um usuário comum**, que irá avaliar principalmente os aspectos externos do sistema (design, usabilidade, etc.).
 
 A apresentação será dividida em duas partes:
 
 * **Explicação:** Apresentação sobre o sistema, principais funcionalidades, o que foi implementado, o que foi usado, etc. etc.
-* **Demonstração:** Você irá executar o seu sistema e mostrar o funcionamento 
+* **Demonstração:** Você irá executar o seu sistema e mostrar o funcionamento dos requisitos implementados.
 
 ## Pilha de Tecnologias
 
