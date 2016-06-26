@@ -12,7 +12,7 @@ A demanda por profissionais de tecnologia está cada vez maior no cenário brasi
 
 Na tentativa de resolver esse problema, este documento propõe o desenvolvimento de um banco de talentos centralizado. Basicamente a ideia consiste em desenvolver uma plataforma que sirva de agente intermediário entre empresas e profissionais. Basicamente, talentos em potenciais irão se cadastrar neste banco informando suas áreas de interesse e empresas poderão utilizar este banco para captar talentos de acordo com sua necessidade.
 
-Ainda se desejar, empresas poderão cadastrar e disponibilizar vagas de emprego onde os talentos interessados na vaga poderão se candidatar. A empresa também poderá ver, a qualquer momento, a lista de candidatos interessados na vaga e entrar em contato com quem desejar. 
+Ainda se desejar, empresas poderão cadastrar e disponibilizar vagas de emprego onde os talentos interessados na vaga poderão se candidatar. A empresa também poderá ver, a qualquer momento, a lista de candidatos interessados na vaga e entrar em contato com quem desejar.
 
 Segue abaixo os principais requisitos a serem implementados como primeira versão deste banco de talentos.
 
@@ -27,7 +27,7 @@ Segue abaixo os principais requisitos a serem implementados como primeira versã
 4. **Cadastro de Vagas (Acesso Empresa):** Cadastro de vagas de emprego. As empresas poderão cadastrar vagas de emprego para que os talentos cadastros na plataforma possam manifestar o seu interesse. Uma vaga deverá ter dados como cargo ofertado, salário, local de trabalho, carga horária e descrição das atividades.
 
 5. **Listagem/Busca de Vagas (Acesso Empresa/Interessado):** Tanto as empresas quanto os talentos cadastrados poderão fazer busca de vagas de acordo com seus interesses.
-	* O candidato, ao encontrar uma vaga de interesse, poderá selecionar essa vaga na lista para visualizar seus detalhes. 
+	* O candidato, ao encontrar uma vaga de interesse, poderá selecionar essa vaga na lista para visualizar seus detalhes.
 
 É importante ressaltar que as funcionalidades de cadastro deverão ser acompanhados de suas respectivas funcionalidades de alteração e exclusão. Isto é, você deverá fornercer meios para alteração e exclusão das entidades (talentos, empresas e vagas) do sistema.
 
