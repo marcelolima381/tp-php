@@ -1,0 +1,63 @@
+@font-face {
+  font-family: MKX;
+  src: url(/fonts/mkx.ttf);
+}
+@font-face {
+  font-family: harabara;
+  src :url(/fonts/Harabara.ttf);
+}
+@font-face {
+  font-family: o24d;
+  src :url(/fonts/o24d.ttf);
+}
+@font-face {
+  font-family: bebas;
+  src :url(/fonts/bebas.otf);
+}
+@font-face {
+  font-family: leve;
+  src :url(/fonts/light.ttf);
+}
+@font-face {
+  font-family: bolada;
+  src :url(/fonts/bold.ttf);
+}
+html {
+  background: url(http://static1.squarespace.com/static/5519f7a2e4b029666d8627fa/t/5601f43be4b01386032720b9/1442968639278/o-WOMEN-AT-WORK-facebook.jpg?format=2500w) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.fading-25{
+  background-color: rgba(0, 0,0, 0.25);
+}
+.faded-panel{
+  background-color: rgba(0, 0,0, 0.25);
+  border: thick  rgba(255, 255,255, 0.25);
+  border-radius: 25px;
+}
+.bolada{
+  font-family: bolada;
+}
+.leve{
+  font-family: leve;
+}
+/* label focus color */
+  .input-field input[type=text]:focus + label {
+    color: #000;
+}
+/* label underline focus color */
+  .input-field input[type=text]:focus {
+    border-bottom: 1px solid rgb(255, 255,255);
+    box-shadow: 0 1px 0 0 rgb(255, 255,255);
+  }
+  .input-field input[type=number]:focus {
+    border-bottom: 1px solid rgb(255, 255,255);
+    box-shadow: 0 1px 0 0 rgb(255, 255,255);
+  }
+  .input-field input[type=password]:focus {
+    border-bottom: 1px solid rgb(255, 255,255);
+    box-shadow: 0 1px 0 0 rgb(255, 255,255);
+  }

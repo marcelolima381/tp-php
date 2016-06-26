@@ -7,6 +7,10 @@ brworkApp.config(function($routeProvider) {
 		templateUrl : "templates/home.html",
 		controller  : "mainController",
 	})
+	.when("/login", {
+		templateUrl : "templates/login.html",
+		controller  : "mainController",
+	})
 
 	// route for the skills page
 	.otherwise(
@@ -18,12 +22,4 @@ brworkApp.config(function($routeProvider) {
 // create the controller and inject Angular"s $scope
 brworkApp.controller("mainController", function($scope) {
 
-});
-
-brworkApp.controller("skillsController", function($scope) {
-
-});
-
-brworkApp.controller("expsController", function($scope) {
-
-});
+		});

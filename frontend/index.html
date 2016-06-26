@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html >
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,13 +28,25 @@
 
 
   <!--CSS AND JS-->
-  <link rel="stylesheet" type="text/css" href="css/estilo.css"/>
+  <link rel="stylesheet" type="text/css" href="css/style.css"/>
   <script src="js/script.js"></script>
 
 </head>
 
 
 <body ng-app="brworkApp">
+  <div class="navbar-fixed">
+    <nav class="fading-25">
+      <div class="nav-wrapper row">
+        <a href="#/" class="brand-logo col offset-s1">Trabalha Brasil</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="">Empresas</a></li>
+          <li><a href="">Trabalhadores</a></li>
+          <li><a href="#/login">Login</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
 
 
   <!-- angular templating -->
