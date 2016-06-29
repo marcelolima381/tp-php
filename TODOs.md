@@ -7,7 +7,9 @@
 - [ ] Listagem/Busca de vagas
 - [ ] Listagem/Busca de proletário
 - [ ] Cadastro de vagas
-- [ ] 
+- [ ] Overview da vaga
+- [ ] Overview do usuário
+- [ ] Overview da empresa
 
 ## Persistência
 - [ ] Definir esquema dos dados
