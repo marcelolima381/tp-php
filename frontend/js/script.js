@@ -11,7 +11,14 @@ brworkApp.config(function($routeProvider) {
 		templateUrl : "templates/login.html",
 		controller  : "mainController",
 	})
-
+	.when("/perfil_user", {
+		templateUrl : "templates/perfil.html",
+		controller  : "mainController",
+	})
+	.when("/cadastro-user", {
+		templateUrl : "templates/cadastro-user.html",
+		controller  : "mainController",
+	})
 	// route for the skills page
 	.otherwise(
 		{
