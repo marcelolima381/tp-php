@@ -11,12 +11,32 @@ brworkApp.config(function($routeProvider) {
 		templateUrl : "templates/login.html",
 		controller  : "mainController",
 	})
-	.when("/perfil_user", {
-		templateUrl : "templates/perfil.html",
+	.when("/lg", {
+		templateUrl : "templates/listagem.html",
 		controller  : "mainController",
 	})
-	.when("/cadastro-user", {
+	.when("/av", {
+		templateUrl : "templates/add-vaga.html",
+		controller  : "mainController",
+	})
+	.when("/ov", {
+		templateUrl : "templates/overview-vaga.html",
+		controller  : "mainController",
+	})
+	.when("/ou", {
+		templateUrl : "templates/overview-usuario.html",
+		controller  : "mainController",
+	})
+	.when("/oe", {
+		templateUrl : "templates/overview-empresa.html",
+		controller  : "mainController",
+	})
+	.when("/cu", {
 		templateUrl : "templates/cadastro-user.html",
+		controller  : "mainController",
+	})
+	.when("/ce", {
+		templateUrl : "templates/cadastro-empresa.html",
 		controller  : "mainController",
 	})
 	// route for the skills page
