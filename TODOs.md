@@ -2,14 +2,10 @@
 
 - [x] Tela inicial
 - [x] Tela de Login (Unificado)
-- [ ] Cadastro da empresa
-- [ ] Cadastro de usuário
-- [ ] Listagem/Busca de vagas
-- [ ] Listagem/Busca de proletário
+- [x] Cadastro de emepresa e usuário
+- [ ] Listagem/Busca de vagas & proletário
 - [ ] Cadastro de vagas
-- [ ] Overview da vaga (candidatar)
-- [ ] Overview do usuário público / privado
-- [ ] Overview da empresa público / privado
+- [x] Overview do usuário
 
 ## Persistência
 - [ ] Definir esquema dos dados
