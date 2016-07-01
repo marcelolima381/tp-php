@@ -35,6 +35,10 @@ brworkApp.config(function($routeProvider) {
 		templateUrl : "templates/cadastro-user.html",
 		controller  : "mainController",
 	})
+	.when("/cv", {
+		templateUrl : "templates/cadastro-vaga.html",
+		controller  : "mainController",
+	})
 	.when("/ce", {
 		templateUrl : "templates/cadastro-empresa.html",
 		controller  : "mainController",
