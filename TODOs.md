@@ -1,10 +1,10 @@
-## Prototipagem das Telas
+## Prototipagem das Telas (01/07)
 
 - [x] Tela inicial
 - [x] Tela de Login (Unificado)
-- [x] Cadastro de emepresa e usuário
-- [ ] Listagem/Busca de vagas & proletário
-- [ ] Cadastro de vagas
+- [x] Cadastro de empresa e proletário
+- [x] Listagem/Busca de vagas & proletário
+- [x] Cadastro de vagas
 - [x] Overview do usuário
 
 ## Persistência

@@ -55,9 +55,13 @@ textarea.materialize-textarea:focus.valid {
   border-bottom: 1px solid rgb(0, 0, 0);
   box-shadow: 0 1px 0 0 rgb(0, 0, 0);
 }
+
 .btn-large,
 .btn-flat {
   height: auto;
   line-height: 36px;
-
 }
+
+/*nav .nav-wrapper form, nav .nav-wrapper form .input-field{
+height: 100%;
+}*/

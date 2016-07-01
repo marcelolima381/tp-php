@@ -55,14 +55,40 @@ a:link {
   font-family: leve;
 }
 .form-pad {
-padding: 2.5% 5% 0% 5%;
+  padding: 2.5% 5% 0% 5%;
 }
 
 
 .btn{
   background-color: rgba(0, 0,0, 0.25);
 }
-  .btn:hover {
-    outline: none;
-    background-color:  rgba(0,0,0, 0.4);
-  }
+.btn:hover {
+  outline: none;
+  background-color:  rgba(0,0,0, 0.4);
+}
+
+.listing{
+  text-align: center;
+  background: white;
+  z-index: 15;
+  width: 80%;
+  background-color: transparent;
+}
+.listing * {
+  background-color: white;
+  border-radius: 0.5em;
+}
+.middle-horizontal{
+  display: inline-block;
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+.pagination-bottom-float {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    bottom: 0;
+    /*TODO: setar a posição de modo a ficar sempre acima do footer, atualmente sobrepõe*/
+    width: 100%;
+}
