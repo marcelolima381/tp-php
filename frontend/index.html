@@ -11,9 +11,9 @@
   <link rel="icon" href="/src/img/cms.jpg"/>
 
   <!--Mobile ADRS style -->
-  <meta name="theme-color" content="rgb(0,0,0)"/>
-  <meta name="msapplication-navbutton-color" content="rgb(0,0,0)">
-  <meta name="apple-mobile-web-app-status-bar-style" content="rgb(0,0,0)">
+  <meta name="theme-color" content="rgb(100,100,100)"/>
+  <meta name="msapplication-navbutton-color" content="rgb(100,100,100)">
+  <meta name="apple-mobile-web-app-status-bar-style" content="rgb(100,100,100)">
 
   <!--Import Google Icon Font-->
   <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -27,7 +27,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.6/angular.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
 
-
   <!--CSS AND JS-->
   <link rel="stylesheet" type="text/css" href="css/style.css"/>
   <link rel="stylesheet" type="text/css" href="css/mcssfix.css"/>
@@ -36,32 +35,13 @@
 
 </head>
 
-
 <body ng-app="brworkApp">
-  <div class="navbar-fixed">
-    <nav class="fading-25">
-      <div class="nav-wrapper row">
-        <a href="#/" class="brand-logo col hide-on-med-and-down offset-s1">Trabalha Brasil <i class="fa fa-briefcase" aria-hidden="true"></i></a>
-        <a href="#/" class="brand-logo col hide-on-large-only center ">Trabalha Brasil <i class="fa fa-briefcase" aria-hidden="true"></i></a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="#/lg">listagem-geral</a></li>
-          <li><a href="#/cv">adicionar-vaga</a></li>
-          <li><a href="#/ov">view-vaga</a></li>
-          <li><a href="#/ou">view-usr</a></li>
-          <li><a href="#/oe">view-emprs</a></li>
-          <li><a href="#/cu">Cdstr-usrs</a></li>
-          <li><a href="#/ce">Cdstr-emprs</a></li>
-          <li><a href="#/login">Login</a></li>
-        </ul>
-      </div>
-    </nav>
-  </div>
 
+<ng-include src="'templates/demo.html'"></ng-include>
 
   <!-- angular templating -->
   <!-- this is where content will be injected -->
   <div ng-view></div>
-
 
   <!--Import jQuery before materialize.js-->
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>

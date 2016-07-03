@@ -6,10 +6,13 @@ brworkApp.config(function($routeProvider) {
 	$routeProvider.when("/", {
 		templateUrl : "templates/home.html",
 		controller  : "mainController",
+		controllerAs: "mc"
+
 	})
 	.when("/login", {
 		templateUrl : "templates/login.html",
 		controller  : "mainController",
+		controllerAs: "mc"
 	})
 	.when("/lg", {
 		templateUrl : "templates/listagem.html",
@@ -37,7 +40,7 @@ brworkApp.config(function($routeProvider) {
 	})
 	.when("/cv", {
 		templateUrl : "templates/cadastro-vaga.html",
-		controller  : "mainController",
+		controller  : "mc",
 	})
 	.when("/ce", {
 		templateUrl : "templates/cadastro-empresa.html",
@@ -53,4 +56,7 @@ brworkApp.config(function($routeProvider) {
 // create the controller and inject Angular"s $scope
 brworkApp.controller("mainController", function($scope) {
 
-		});
+
+
+
+});
