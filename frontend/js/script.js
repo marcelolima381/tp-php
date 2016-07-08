@@ -34,16 +34,20 @@ brworkApp.config(function($routeProvider) {
 		templateUrl : "templates/overview-empresa.html",
 		controller  : "mainController",
 	})
-	.when("/cu", {
-		templateUrl : "templates/cadastro-user.html",
-		controller  : "mainController",
-	})
 	.when("/cv", {
 		templateUrl : "templates/cadastro-vaga.html",
 		controller  : "mc",
 	})
-	.when("/ce", {
+	.when("/add", {
+		templateUrl : "templates/cadastro.html",
+		controller  : "mainController",
+	})
+	.when("/addcomp", {
 		templateUrl : "templates/cadastro-empresa.html",
+		controller  : "mainController",
+	})
+	.when("/adduser", {
+		templateUrl : "templates/cadastro-user.html",
 		controller  : "mainController",
 	})
 	// route for the skills page
@@ -56,7 +60,23 @@ brworkApp.config(function($routeProvider) {
 // create the controller and inject Angular"s $scope
 brworkApp.controller("mainController", function($scope) {
 
+this.a = 0;
 
 
+});
+brworkApp.controller("menuController", function($scope) {
+var self = this;
+
+
+	self.links = [{}];
+
+	self.links [0] = {
+		name : "Cadastro",
+		link : "add"
+	}
+	self.links [1] = {
+		name : "Login",
+		link : "login"
+	}
 
 });
