@@ -1,5 +1,26 @@
 {
+    "name" : "coltec/brworks",
+    "description" : "Trabalho prático de PHP da disciplina DAW",
+    "license" : "MIT",
+    "authors" : [
+        {
+            "name": "Ariel Santos",
+            "email": "as-ariel@outlook.com",
+            "homepage": "http://asantos07.github.com",
+            "role": "Developer"
+        },
+        {
+            "name": "Henzo",
+            "role": "Morgador"
+        }
+    ],
     "require" : {
         "slim/slim": "*"
+    },
+    "autoload":{
+        "psr-4" : {
+            "Coltec\\Controller\\" : "src/controllers/",
+            "Coltec\\Persist\\" : "src/persistencia"
+        }
     }
 }
