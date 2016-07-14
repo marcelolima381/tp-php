@@ -3,11 +3,11 @@
 namespace Controller;
 
 /**
- * Trata todas as rotas de usuários
+ * Gerencia as rotas de criação de entidades
  *
- * @author Ariel
+ * @author strudel
  */
-class User {
+class Register extends DefaultController {
 
     public function __invoke($request, $response, $args) {
         

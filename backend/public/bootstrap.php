@@ -2,8 +2,8 @@
 
 require_once '../vendor/autoload.php';
 
-use \Psr\Http\Message\ServerRequestInterface as Req;
-use \Psr\Http\Message\ResponseInterface as Res;
+use \Psr\Http\Message\ServerRequestInterface as Request;
+use \Psr\Http\Message\ResponseInterface as Response;
 use \Coltec\Controller;
 use \Coltec\Persist;
 
@@ -17,6 +17,7 @@ $test = function () {
 };
 
 $app->get('/', $test);
+
 
 $app->get('/user[[/{range:[0-9]+-[0-9]+(?!\S)}][/{id:[0-9]+}]]', '\Controller\User');
 
