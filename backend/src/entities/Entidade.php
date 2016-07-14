@@ -1,6 +1,6 @@
 <?php
 
-namespace Entidade;
+namespace Entity;
 
 /**
  * Description of Usuario
@@ -8,7 +8,18 @@ namespace Entidade;
  * @author strudel
  */
 abstract class Entidade {
-
+    
+    /**
+     *
+     * @var int ID único da entidade 
+     */
+    public $id;
+    
+    /**
+     * @param array $data Array associativo com todas as propriedades da entidade
+     */
+    abstract public function __construct(array $data = []);
+    
     /**
      * Checa se $newer tem algum valor diferente do objeto e sobrepôe a $this.
      * @param Object $newer
@@ -23,7 +34,7 @@ abstract class Entidade {
      * Retorna e extenção do arquivo desse tipo de objeto no 'banco de dados'
      * @return string
      */
-    abstract public function getExt();
+    abstract static public function getExt();
 
     /**
      * Escreve o objeto no 'banco de dados'
@@ -34,6 +45,10 @@ abstract class Entidade {
             $this->updateData($previous);
         }
         \Persistence\Persist::writeObject($this);
+    }
+    
+    public function getId(){
+        return $this->id;
     }
 
 }

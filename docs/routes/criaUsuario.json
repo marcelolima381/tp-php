@@ -5,7 +5,8 @@
         "dataN": "(string)[DD/MM/AAAA]",
         "telefone": "(string)",
         "email": "(string)",
-        "senha" : "(string)"
+        "senha" : "(string)",
+        "id" : "(string)"
     },
     "response": {
         "nome": "(string)",

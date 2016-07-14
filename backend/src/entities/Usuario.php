@@ -4,7 +4,6 @@ namespace Entity;
 
 /**
  * Entitade que representa um Usuário comum
-  >>>>>>> Stashed changes
  *
  * @author asantos07
  */
@@ -13,23 +12,22 @@ class Usuario extends Entidade {
     var $nome;
     var $dataN;
     var $email;
-    var $login;
-    var $id;
     var $link;
-    var $dataN;
     var $senha;
+    var $telefone;
 
-    public function __construct($nome, $dataN, $email, $login, $link, $dataN, $senha) {
-        $this->nome = $nome;
-        $this->dataN = $dataN;
-        $this->email = $email;
-        $this->login = $login;
-        $this->link = $link;
-        $this->dataN = $dataN;
-        $this->senha = $senha;
+    public function __construct(array $data = []) {
+        $this->nome = $data[nome];
+        $this->dataN = $data[dataN];
+        $this->email = $data[email];
+        $this->link = $data[link];
+        $this->dataN = $data[dataN];
+        $this->senha = $data[senha];
+        $this->id = $data[id];
+        $this->telefone = $data[telefone];
     }
 
-    public function getExt() {
+    static public function getExt() {
         return ".u";
     }
 
