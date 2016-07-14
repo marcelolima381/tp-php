@@ -1,17 +1,19 @@
 <?php
 
-namespace Entidade;
+namespace Entity;
 
 /**
- * Description of Usuario
+ * Entitade que representa um Usuário comum
+  >>>>>>> Stashed changes
  *
- * @author strudel
+ * @author asantos07
  */
-class Usuario extends Entidade{
+class Usuario extends Entidade {
 
     var $nome;
     var $dataN;
     var $email;
+    var $login;
     var $id;
     var $link;
     var $dataN;
@@ -27,10 +29,6 @@ class Usuario extends Entidade{
         $this->senha = $senha;
     }
 
-    /**
-     * 
-     * @return string
-     */
     public function getExt() {
         return ".u";
     }
