@@ -4,8 +4,6 @@ require_once '../vendor/autoload.php';
 
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
-use \Coltec\Controller;
-use \Coltec\Persist;
 
 $app = new \Slim\App();
 header("Access-Control-Allow-Origin: *");
