@@ -12,9 +12,9 @@ class Persist {
         $array = null;
         if (file_exists(DB . $id . $ext)) {
             $file = file_get_contents(DB . $id . $ext);
-            $array = JsonHandler::decode($file);
+            $array = \Helper\JsonHandler::decode($file);
         }
-        return $array ? null : $array;
+        return $array ? $array : null;
     }
 
     static public function readObjectRange($upper, $lower, $ext) {

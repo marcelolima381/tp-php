@@ -3,32 +3,28 @@
 namespace Entity;
 
 /**
- * Description of Usuario
+ * Superclasse que define os métodos básicos das entidades
  *
- * @author strudel
+ * @author asantos07
  */
 abstract class Entidade {
-    
+
     /**
      *
      * @var int ID único da entidade 
      */
     public $id;
-    
+
     /**
      * @param array $data Array associativo com todas as propriedades da entidade
      */
     abstract public function __construct(array $data = []);
-    
+
     /**
      * Checa se $newer tem algum valor diferente do objeto e sobrepôe a $this.
      * @param Object $newer
      */
-    public function updateData($newer = array()) {
-        foreach ($this as $key => $value) {
-            $value = $newer[$key] != null ? $newer[$key] : $value;
-        }
-    }
+    abstract public function updateData($newer = array());
 
     /**
      * Retorna e extenção do arquivo desse tipo de objeto no 'banco de dados'
@@ -46,8 +42,8 @@ abstract class Entidade {
         }
         \Persistence\Persist::writeObject($this);
     }
-    
-    public function getId(){
+
+    public function getId() {
         return $this->id;
     }
 

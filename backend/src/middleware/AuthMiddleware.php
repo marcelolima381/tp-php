@@ -5,7 +5,7 @@ namespace Middleware;
 /**
  * Description of newPHPClass
  *
- * @author strudel
+ * @author asantos07
  */
 class AuthMiddleware {
 

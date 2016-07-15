@@ -4,6 +4,7 @@ namespace Entity;
 
 /**
  * Entitade que representa um Usuário comum
+ * Esquema de arquivo é [id].u
  *
  * @author asantos07
  */
@@ -28,6 +29,27 @@ class Usuario extends Entidade {
 
     static public function getExt() {
         return ".u";
+    }
+
+    public function updateData($newer = array()) {
+        if ($newer['nome']) {
+            $this->nome = $newer['nome'];
+        }
+        if ($newer['dataN']) {
+            $this->dataN = $newer['dataN'];
+        }
+        if ($newer['email']) {
+            $this->email = $newer['email'];
+        }
+        if ($newer['link']) {
+            $this->link = $newer['link'];
+        }
+        if ($newer['senha']) {
+            $this->senha = $newer['senha'];
+        }
+        if ($newer['telefone']) {
+            $this->telefone = $newer['telefone'];
+        }
     }
 
 }

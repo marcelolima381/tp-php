@@ -17,27 +17,29 @@ $test = function () {
 
 $app->get('/', $test);
 
-
+/**
+ * Insecure routes
+ */
 $app->group('/user', function () {
     $this->get('[/{range:[0-9]+-[0-9]+}]', '\Controller\User');
     $this->get('/{id:[0-9]+}', '\Controller\User');
 });
-
 $app->group('/company', function () {
     $this->get('[/{range:[0-9]+-[0-9]+}]', '\Controller\Company');
     $this->get('/{id:[0-9]+}', '\Controller\Company');
 });
-
 $app->group('/job', function () {
     $this->get('[/{range:[0-9]+-[0-9]+}]', '\Controller\Job');
     $this->get('/{id:[0-9]+}', '\Controller\Job');
 });
 
+/**
+ * "Secure" routes
+ */
 $app->group('/register', function () {
     $this->post('/{type:j}', '\Controller\Register')->add(new \Middleware\AuthMiddleware());
     $this->post('/{type:[u|c]}', '\Controller\Register');
 });
-
 $app->patch('/alter/{type:[u|e|v]}/{id:[0-9]+}', '\Controller\Alter')->add(new \Middleware\AuthMiddleware());
 
 $app->run();
