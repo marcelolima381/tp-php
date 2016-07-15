@@ -35,7 +35,9 @@ $app->group('/job', function () {
 
 $app->group('/register', function () {
     $this->post('/{type:j}', '\Controller\Register')->add(new \Middleware\AuthMiddleware());
-    $this->post('/{type:[u|c]}', '\Controler\Register');
+    $this->post('/{type:[u|c]}', '\Controller\Register');
 });
 
 $app->patch('/alter/{type:[u|e|v]}/{id:[0-9]+}', '\Controller\Alter')->add(new \Middleware\AuthMiddleware());
+
+$app->run();

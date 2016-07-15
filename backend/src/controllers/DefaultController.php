@@ -11,7 +11,7 @@ abstract class DefaultController {
 
     protected $ci;
 
-    public function __construct(ContainerInterface $ci) {
+    public function __construct(\Slim\Container $ci) {
         $this->ci = $ci;
     }
 

@@ -6,31 +6,34 @@ class Persist {
 
     /**
      * 
-     * @param object $type O objeto a ser lido
+     * @param Entidade $ent O objeto a ser lido
      */
-    static public function readObject(\Entity\Entidade $type, $id) {
-        $ext = $type->getId();
-        $file = file_get_contents(DB . $id . $ext);
-        $array = \JsonHandler::decode($file);
-        return $array;
+    static public function readObject($id, $ext) {
+        $array = null;
+        if (file_exists(DB . $id . $ext)) {
+            $file = file_get_contents(DB . $id . $ext);
+            $array = JsonHandler::decode($file);
+        }
+        return $array ? null : $array;
     }
 
-    static public function readObjectRange($upper, $lower, \Entity\Entidade $type) {
-        $array;
-        $ext = $type->getId();
+    static public function readObjectRange($upper, $lower, $ext) {
+        $array = array();
         if ($upper > $lower) {
             for ($c = $lower; $c < $upper; $c++) {
-                $file = file_get_contents(DB . $c . $ext);
-                $array[$c] = \JsonHandler::decode($file);
+                if (file_exists(DB . $c . $ext)) {
+                    $file = file_get_contents(DB . $c . $ext);
+                    $array[$c] = \Helper\JsonHandler::decode($file);
+                }
             }
         }
         return $array;
     }
 
     static public function writeObject($object) {
-        $encoded = \JsonHandler::encode($object);
+        $encoded = \Helper\JsonHandler::encode($object);
         $filename = $object->getId() . $object->getExt();
-        $file = fopen($filename, "w");
+        $file = fopen("../data/" . $filename, "w");
         fwrite($file, $encoded);
         fclose($file);
     }

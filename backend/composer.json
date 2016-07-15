@@ -20,9 +20,10 @@
     "autoload":{
         "psr-4" : {
             "Controller\\" : "src/controllers/",
-            "Persist\\" : "src/persistencia/",
+            "Persistence\\" : "src/persistence/",
             "Entity\\" : "src/entities/",
-            "Middleware\\" : "src/middleware/"
+            "Middleware\\" : "src/middleware/",
+            "Helper\\" : "src/helpers/"
         }
     }
 }

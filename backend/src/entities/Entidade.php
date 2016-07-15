@@ -26,7 +26,7 @@ abstract class Entidade {
      */
     public function updateData($newer = array()) {
         foreach ($this as $key => $value) {
-            $value = $newer[$key] ?? $value;
+            $value = $newer[$key] != null ? $newer[$key] : $value;
         }
     }
 
@@ -40,7 +40,7 @@ abstract class Entidade {
      * Escreve o objeto no 'banco de dados'
      */
     public function flush() {
-        $previous = \Persistence\Persist::readObject($this);
+        $previous = \Persistence\Persist::readObject($this->getId(), $this->getExt());
         if ($previous) {
             $this->updateData($previous);
         }
