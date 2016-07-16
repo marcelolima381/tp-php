@@ -21,7 +21,7 @@ $app->get('/', $test);
  * Insecure routes
  */
 $app->group('/user', function () {
-    $this->get('[/{range:[0-9]+-[0-9]+}]', '\Controller\User');
+    $this->get('[/{range:[0-9]+[-][0-9]+}]', '\Controller\User');
     $this->get('/{id:[0-9]+}', '\Controller\User');
 });
 $app->group('/company', function () {

@@ -1,0 +1,69 @@
+<?php
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+namespace Controller;
+
+/**
+ * Description of Job
+ *
+ * @author asantos
+ */
+class Job {
+
+    public function __invoke($request, $response, $args) {
+        if ($args['range']) {
+            $jobs = $this->getByRange($args['range']);
+            if ($jobs) {
+                return $response->withJson($jobs);
+            } else {
+                return $response->withStatus(404);
+            }
+        } elseif ($args['id']) {
+            $job = $this->getById($args['id']);
+            if ($job) {
+                return $response->withJson($job);
+            } else {
+                return $response->withStatus(404);
+            }
+        }
+    }
+
+    /**
+     * 
+     * @param int $id
+     * @return Vaga Retorna Vaga se houver, se não retorna NULL
+     */
+    private function getById($id) {
+        $job = \Persistence\Persist::readObject($id, \Entity\Vaga::getExt());
+        if ($job) {
+            return $job;
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * 
+     * @param string $range
+     * @return array(Vaga) Retorna array de Vaga se houver, se não retorna NULL
+     */
+    private function getByRange($range) {
+        $bounds = [];
+        preg_match("/([0-9]+)[-]([0-9]+)/", $range, $bounds);
+        if ($bounds[1] >= $bounds[2]) {
+            return NULL;
+        }
+        $jobs = \Persistence\Persist::readObjectRange($bounds[2], $bounds[1], \Entity\Vaga::getExt());
+        if ($jobs) {
+            return $jobs;
+        } else {
+            return NULL;
+        }
+    }
+
+}

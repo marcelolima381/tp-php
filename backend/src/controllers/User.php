@@ -3,17 +3,60 @@
 namespace Controller;
 
 /**
- * Trata todas as rotas de usuários
+ * Trata as rotas de usuários
  *
  * @author Ariel
  */
-class User {
+class User extends DefaultController {
 
     public function __invoke($request, $response, $args) {
-        if($args['range']){
-            return $response->write("keks");
-        }elseif($args['id']){
-            return $response->write("kek");
+        if ($args['range']) {
+            $users = $this->getByRange($args['range']);
+            if ($users) {
+                return $response->withJson($users);
+            } else {
+                return $response->withStatus(404);
+            }
+        } elseif ($args['id']) {
+            $user = $this->getById($args['id']);
+            if ($user) {
+                return $response->withJson($user);
+            } else {
+                return $response->withStatus(404);
+            }
+        }
+    }
+
+    /**
+     * 
+     * @param int $id
+     * @return Usuario Retorna Usuario se houver, se não retorna NULL
+     */
+    private function getById($id) {
+        $user = \Persistence\Persist::readObject($id, \Entity\Usuario::getExt());
+        if ($user) {
+            return $user;
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * 
+     * @param string $range
+     * @return array(User) Retorna array de Usuario se houver, se não retorna NULL
+     */
+    private function getByRange($range) {
+        $bounds = [];
+        preg_match("/([0-9]+)[-]([0-9]+)/", $range, $bounds);
+        if ($bounds[1] >= $bounds[2]) {
+            return NULL;
+        }
+        $users = \Persistence\Persist::readObjectRange($bounds[2], $bounds[1], \Entity\Usuario::getExt());
+        if ($users) {
+            return $users;
+        } else {
+            return NULL;
         }
     }
 
