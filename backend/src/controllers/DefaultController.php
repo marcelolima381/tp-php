@@ -5,8 +5,8 @@ namespace Controller;
 /**
  * Superclasse dos controllers
  *
- * @author Ariel
- */
+ * @author asantos07
+*/
 abstract class DefaultController {
 
     protected $ci;

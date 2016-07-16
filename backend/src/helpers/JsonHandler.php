@@ -6,7 +6,7 @@ namespace Helper;
  * Helper para 
  *
  * @author asantos07
- */
+*/
 
 class JsonHandler {
 

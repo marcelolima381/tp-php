@@ -6,7 +6,7 @@ namespace Entity;
  * Superclasse que define os métodos básicos das entidades
  *
  * @author asantos07
- */
+*/
 abstract class Entidade {
 
     /**

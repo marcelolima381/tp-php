@@ -6,7 +6,7 @@ namespace Controller;
  * Gerencia as rotas de criação de entidades
  *
  * @author asantos07
- */
+*/
 class Register extends DefaultController {
 
     public function __invoke($request, $response, $args) {

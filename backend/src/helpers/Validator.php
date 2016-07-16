@@ -6,7 +6,7 @@ namespace Helper;
  * Helper para validar arrays associativos de objetos
  *
  * @author asantos07
- */
+*/
 class Validator {
 
     public static function checkUser($data = array()) {

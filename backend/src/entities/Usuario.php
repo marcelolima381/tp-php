@@ -7,7 +7,7 @@ namespace Entity;
  * Esquema de arquivo é [id].u
  *
  * @author asantos07
- */
+*/
 class Usuario extends Entidade {
 
     var $nome;

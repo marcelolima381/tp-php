@@ -7,7 +7,7 @@ namespace Entity;
  * Esquema de arquivo é [id].v
  *
  * @author asantos07
- */
+*/
 class Vaga extends Entidade {
 
     var $titulo;

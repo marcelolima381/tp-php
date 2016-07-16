@@ -5,8 +5,8 @@ namespace Controller;
 /**
  * Trata as rotas de usuários
  *
- * @author Ariel
- */
+ * @author asantos07
+*/
 class User extends DefaultController {
 
     public function __invoke($request, $response, $args) {
