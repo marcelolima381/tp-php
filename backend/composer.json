@@ -19,8 +19,11 @@
     },
     "autoload":{
         "psr-4" : {
-            "Coltec\\Controller\\" : "src/controllers/",
-            "Coltec\\Persist\\" : "src/persistencia"
+            "Controller\\" : "src/controllers/",
+            "Persistence\\" : "src/persistence/",
+            "Entity\\" : "src/entities/",
+            "Middleware\\" : "src/middleware/",
+            "Helper\\" : "src/helpers/"
         }
     }
 }

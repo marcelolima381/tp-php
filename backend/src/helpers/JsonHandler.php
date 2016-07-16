@@ -1,9 +1,11 @@
 <?php
 
+namespace Helper;
+
 /**
- * Description of JsonHandler
+ * Helper para 
  *
- * @author strudel
+ * @author asantos07
  */
 
 class JsonHandler {
