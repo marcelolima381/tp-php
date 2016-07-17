@@ -32,7 +32,7 @@ class Empresa extends Entidade {
         $this->area = $data->area;
         $this->cnpj = $data->cnpj;
         $this->telefone = $data->telefone;
-        $this->vagas = array();
+        $this->vagas = [];
     }
 
     static public function getExt() {
@@ -61,6 +61,10 @@ class Empresa extends Entidade {
         if (!$this->cnpj) {
             $this->cnpj = $older->cnpj;
         }
+    }
+    
+    public function addVaga(\Entity\Vaga $vaga){
+        $this->vagas[] = $vaga->getId();
     }
 
 }

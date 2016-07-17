@@ -23,10 +23,21 @@ class AuthMiddleware {
         if (PHP_SESSION_ACTIVE != session_status() || "auth" == session_name()) {
             return $response->withStatus (303)->withHeader ("Location", HOST . "/login");
         } elseif (self::ACC_LEVEL[$name] == $_SESSION["userType"]) {
-            $next($request, $response);
-        } elseif (self::ACC_LEVEL[$name] == "owner") {
-            if ($arguments['id'] == $_SESSION['userId'] && $body['id'] == $_SESSION['userId']) {
+            if($name == "registerJob") {
+                $empresa = \Persistence\Persist::readObject($body['empresaId'], \Entity\Empresa::getExt());
+                if($empresa && $empresa->getId() == $_SESSION['userId']){
+                    $next($request, $response);
+                }else {
+                    return $response->withStatus(401);
+                }
+            } else {
                 $next($request, $response);
+            }
+        } elseif (self::ACC_LEVEL[$name] == "owner") {
+            if (($arguments['id'] == $_SESSION['userId'] && $body['id'] == $_SESSION['userId']) || ($arguments['empresaId'] == $_SESSION['userId'] && $body['empresaId'] == $_SESSION['userId'])) {
+                $next($request, $response);
+            }  else {
+                return $response->withStatus(401);
             }
         }
         return $response;

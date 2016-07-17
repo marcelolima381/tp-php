@@ -26,7 +26,7 @@ class Validator {
     }
 
     public static function checkVaga($data = array()) {
-        if (isset($data['nome'], $data['email'], $data['senha'], $data['descricao'], $data['area'], $data['cnpj'], $data['telefone'], $data['id'])) {
+        if (isset($data['titulo'], $data['empresaId'], $data['funcao'], $data['salario'])) {
             return TRUE;
         } else {
             return FALSE;

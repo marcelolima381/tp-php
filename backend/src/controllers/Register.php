@@ -18,10 +18,16 @@ class Register extends DefaultController {
             return $response->withStatus(409);
         } else {
             $entidade->flush();
-            $filename = md5($entidade->getId()) . md5($entidade->getExt());
-            $file = fopen( CRED . $filename, "w");
-            fwrite($file, md5($parsedBody['senha']));
-            fclose($file);
+            if ($parsedBody['senha']) {
+                $filename = md5($entidade->getId()) . md5($entidade->getExt());
+                $file = fopen(CRED . $filename, "w");
+                fwrite($file, md5($parsedBody['senha']));
+                fclose($file);
+            } elseif ($parsedBody['empresaId']) {
+                $empresa = \Persistence\Persist::readObject($parsedBody['empresaId'], \Entity\Empresa::getExt());
+                $empresa->addVaga($entidade);
+                $empresa->flush();
+            }
             return $response->withStatus(201);
         }
     }

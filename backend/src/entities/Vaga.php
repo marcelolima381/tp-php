@@ -33,7 +33,7 @@ class Vaga extends Entidade {
         if (!$this->funcao) {
             $this->funcao = $older->funcao;
         }
-        if (!$this->$salario) {
+        if (!$this->salario) {
             $this->salario = $older->salario;
         }
     }
