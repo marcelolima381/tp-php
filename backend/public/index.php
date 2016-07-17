@@ -26,6 +26,7 @@ $app->get('/', $test);
 $app->group('/user', function () {
     $this->get('[/{range:[0-9]+[-][0-9]+}]', '\Controller\User');
     $this->get('/{id:[0-9]+}', '\Controller\User');
+    $this->get('/available', '\Controller\User');
 });
 $app->group('/company', function () {
     $this->get('[/{range:[0-9]+-[0-9]+}]', '\Controller\Company');

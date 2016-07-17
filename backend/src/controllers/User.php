@@ -10,20 +10,23 @@ namespace Controller;
 class User extends DefaultController {
 
     public function __invoke($request, $response, $args) {
-        if ($args['range']) {
+        if (array_key_exists("range", $args)) {
             $users = $this->getByRange($args['range']);
             if ($users) {
                 return $response->withJson($users);
             } else {
                 return $response->withStatus(404);
             }
-        } elseif ($args['id']) {
+        } elseif (array_key_exists("id", $args)) {
             $user = $this->getById($args['id']);
             if ($user) {
                 return $response->withJson($user);
             } else {
                 return $response->withStatus(404);
             }
+        }else {
+            $last = \Persistence\AutoIncrement::get(\Entity\Usuario::getExt());
+            return $response->write($last);
         }
     }
 

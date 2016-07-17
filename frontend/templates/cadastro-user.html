@@ -6,30 +6,30 @@
     <form class="white-text form-pad">
       <div class="input-field col s12">
         <h5 class="light">Nome</h5>
-        <input  id="name" type="text" class="validate">
+        <input id="name" type="text" class="validate" ng-model="user.nome">
       </div>
       <div class="row"><div class="col m6 offset-m3 "><h1></h1></div></div>
       <div class="input-field col s12">
-        <h5 class="light">ID Usuário</h5>
-        <input  id="usrname" type="text" class="validate">
+        <h5 class="light">ID de Usuário</h5>
+        <input  id="userId" type="text" value="{{id}}" ng-model="user.id" disabled>
       </div>
       <div class="row"><div class="col m6 offset-m3 "><h6></h6></div></div>
       <div class="input-field col s12">
         <h5 class="light">Email</h5>
-        <input  id="email" type="text" class="validate">
+        <input  id="email" type="text" class="validate" ng-model="user.email">
       </div>
       <div class="row"><div class="col m6 offset-m3 "><h1></h1></div></div>
       <div class="input-field col s5">
         <h5 class="light">Senha</h5>
-        <input id="psswd" type="password" class="validate">
+        <input id="psswd" type="password" class="validate" ng-model="user.senha">
       </div>
       <div class="input-field col s5 offset-s2">
         <h5 class="light">Confirmar Senha</h5>
-        <input id="psswd-confirm" type="password" class="validate">
+        <input id="psswd-confirm" type="password" class="validate" ng-model="user.senhaConfirm">
       </div>
       <div class="row"><div class="col m6 offset-m3 "><h1></h1></div></div>
       <div class="col s3 offset-s8 l2 offset-l10">
-        <button class="btn faded-panel"> Cadastrar</button>
+        <button class="btn faded-panel" type="submit" name="action" ng-click="newUser(user)"> Cadastrar</button>
       </div>
       <div class="row"><div class="col m6 offset-m3 "><h1></h1></div></div>
     </div>

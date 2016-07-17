@@ -1,51 +1,74 @@
 <!DOCTYPE html>
 <html >
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!--Titulo -->
-  <title> Trabalha Brasil </title>
+        <!--Titulo -->
+        <title> Trabalha Brasil </title>
 
-  <!--Icone -->
-  <link rel="icon" href="/src/img/cms.jpg"/>
+        <!--Icone -->
+        <link rel="icon" href="/src/img/cms.jpg"/>
 
-  <!--Mobile ADRS style -->
-  <meta name="theme-color" content="rgb(100,100,100)"/>
-  <meta name="msapplication-navbutton-color" content="rgb(100,100,100)">
-  <meta name="apple-mobile-web-app-status-bar-style" content="rgb(100,100,100)">
+        <!--Mobile ADRS style -->
+        <meta name="theme-color" content="rgb(100,100,100)"/>
+        <meta name="msapplication-navbutton-color" content="rgb(100,100,100)">
+        <meta name="apple-mobile-web-app-status-bar-style" content="rgb(100,100,100)">
 
-  <!--Import Google Icon Font-->
-  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+        <!--Import Google Icon Font-->
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
-  <!--Import materialize.css-->
-  <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
 
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.6/angular.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+        <!--CSS-->
+        <link rel="stylesheet" type="text/css" href="css/style.css"/>
+        <link rel="stylesheet" type="text/css" href="css/mcssfix.css"/>
+    </head>
 
-  <!--CSS AND JS-->
-  <link rel="stylesheet" type="text/css" href="css/style.css"/>
-  <link rel="stylesheet" type="text/css" href="css/mcssfix.css"/>
+    <body ng-app="brworks" ng-controller="mainController">
 
-  <script src="js/script.js"></script>
-
-</head>
-
-<body ng-app="brworkApp" ng-controller="mainController">
-
-<ng-include src="'templates/menu_template.html'"></ng-include>
+        <!--<ng-include src="'templates/menu_template.html'"></ng-include>-->
 
 
-  <!-- angular templating -->
-  <!-- this is where content will be injected -->
-  <div ng-view></div>
+        <!-- angular templating -->
+        <!-- this is where content will be injected -->
+        <div ng-view></div>
 
-  <!--Import jQuery before materialize.js-->
-  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script type="text/javascript" src="js/materialize.min.js"></script>
-</body>
+        <!-- Rodapé -->
+        <footer class="page-footer indigo darken-3">
+            <div class="container">
+                <div class="row">
+                    <div class="col l9 s12">
+                        <h5 class="white-text">COLTEC/MG</h5>
+                        <p class="grey-text text-lighten-4">Essa página foi desenvolvida pelo Setor de Informática do Colégio Técnico de Minas Gerais.</p>
+                    </div>
+                    <div class="col l3 s12">
+                        <h5 class="white-text">Contato</h5>
+                        <ul>
+                            <li><a class="white-text" href="#!">Link 1</a></li>
+                            <li><a class="white-text" href="#!">Link 2</a></li>
+                            <li><a class="white-text" href="#!">Link 3</a></li>
+                            <li><a class="white-text" href="#!">Link 4</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright indigo darken-4">
+                <div class="container">
+                    Made with <i class="material-icons">loyalty</i> by <a href="#">Setor de Informática</a> and the lovely student <a href="https://www.ariel.santos.nom.br/">Ariel Santos</a>
+                </div>
+            </div>
+        </footer>
+        <!-- Fim rodapé -->
+
+        <!--jQuery e materialize.js-->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+        <script type="text/javascript" src="js/angular.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-route.js"></script>
+        <script type="text/javascript" src="js/app.js"></script>
+        
+    </body>
 </html>

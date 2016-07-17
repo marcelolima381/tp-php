@@ -9,14 +9,14 @@ namespace Controller;
 class Company {
 
     public function __invoke($request, $response, $args) {
-        if ($args['range']) {
+        if (array_key_exists("range", $args)) {
             $companies = $this->getByRange($args['range']);
             if ($companies) {
                 return $response->withJson($companies);
             } else {
                 return $response->withStatus(404);
             }
-        } elseif ($args['id']) {
+        } elseif (array_key_exists("id", $args)) {
             $company = $this->getById($args['id']);
             if ($company) {
                 return $response->withJson($company);

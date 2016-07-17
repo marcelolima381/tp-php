@@ -36,7 +36,7 @@ class Empresa extends Entidade {
     }
 
     static public function getExt() {
-        return ".c";
+        return ".e";
     }
 
     public function mergeData($older) {

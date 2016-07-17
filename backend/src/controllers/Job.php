@@ -9,14 +9,14 @@ namespace Controller;
 class Job {
 
     public function __invoke($request, $response, $args) {
-        if ($args['range']) {
+        if (array_key_exists("range", $args)) {
             $jobs = $this->getByRange($args['range']);
             if ($jobs) {
                 return $response->withJson($jobs);
             } else {
                 return $response->withStatus(404);
             }
-        } elseif ($args['id']) {
+        } elseif (array_key_exists("id", $args)) {
             $job = $this->getById($args['id']);
             if ($job) {
                 return $response->withJson($job);
