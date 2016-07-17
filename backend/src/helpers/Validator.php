@@ -35,6 +35,9 @@ class Validator {
 
     public static function validadeCreate($type, $json_array) {
         $entidade = null;
+        if($json_array['id'] < 0){
+            return NULL;
+        }
         switch ($type) {
             case 'u':
                 if (Validator::checkUser($json_array)) {

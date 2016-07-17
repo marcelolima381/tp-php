@@ -24,7 +24,7 @@ abstract class Entidade {
      * Checa se $newer tem algum valor diferente do objeto e sobrepôe a $this.
      * @param Object $newer
      */
-    abstract public function updateData($newer = array());
+    abstract public function mergeData($newer);
 
     /**
      * Retorna e extenção do arquivo desse tipo de objeto no 'banco de dados'
@@ -38,7 +38,8 @@ abstract class Entidade {
     public function flush() {
         $previous = \Persistence\Persist::readObject($this->getId(), $this->getExt());
         if ($previous) {
-            $this->updateData($previous);
+            $this->mergeData($previous);
+            echo json_encode($this);
         }
         \Persistence\Persist::writeObject($this);
     }

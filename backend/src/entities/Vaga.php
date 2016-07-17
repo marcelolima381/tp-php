@@ -16,25 +16,25 @@ class Vaga extends Entidade {
     var $salario;
 
     public function __construct(array $data = array()) {
-        $this->titulo = $data['titulo'];
-        $this->empresaId = $data['empresaId'];
-        $this->funcao = $data['funcao'];
-        $this->salario = $data['salario'];
-        $this->id = $data['id'];
+        $this->titulo = $data->titulo;
+        $this->empresaId = $data->empresaId;
+        $this->funcao = $data->funcao;
+        $this->salario = $data->salario;
+        $this->id = $data->id;
     }
 
-    public function updateData($newer = array()) {
-        if ($newer['titulo']) {
-            $this->titulo = $newer['titulo'];
+    public function mergeData($older) {
+        if (!$this->titulo) {
+            $this->titulo = $older->titulo;
         }
-        if ($newer['empresaId']) {
-            $this->empresaId = $newer['empresaId'];
+        if (!$this->empresaId) {
+            $this->empresaId = $older->empresaId;
         }
-        if ($newer['funcao']) {
-            $this->funcao = $newer['funcao'];
+        if (!$this->funcao) {
+            $this->funcao = $older->funcao;
         }
-        if ($newer['$salario']) {
-            $this->$salario = $newer['$salario'];
+        if (!$this->$salario) {
+            $this->salario = $older->salario;
         }
     }
 

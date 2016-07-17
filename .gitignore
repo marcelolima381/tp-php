@@ -1,5 +1,4 @@
 /nbproject/private/
 /backend/vendor/
-/backend/data/*.u
-/backend/data/*.c
-/backend/data/*.j
+/backend/data/
+/backend/credentials/

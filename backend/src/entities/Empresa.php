@@ -17,17 +17,21 @@ class Empresa extends Entidade {
     var $area;
     var $cnpj;
     var $telefone;
+    /**
+     *
+     * @var array Array q armazena os IDs das vagas associadas a essa empresa
+     */
     var $vagas;
 
     public function __construct(array $data = []) {
-        $this->nome = $data['nome'];
-        $this->email = $data['email'];
-        $this->senha = $data['senha'];
-        $this->descricao = $data['descricao'];
-        $this->id = $data['id'];
-        $this->area = $data['area'];
-        $this->cnpj = $data['cnpj'];
-        $this->telefone = $data['telefone'];
+        $this->nome = $data->nome;
+        $this->email = $data->email;
+        $this->senha = $data->senha;
+        $this->descricao = $data->descricao;
+        $this->id = $data->id;
+        $this->area = $data->area;
+        $this->cnpj = $data->cnpj;
+        $this->telefone = $data->telefone;
         $this->vagas = array();
     }
 
@@ -35,27 +39,27 @@ class Empresa extends Entidade {
         return ".c";
     }
 
-    public function updateData($newer = array()) {
-        if ($newer['nome']) {
-            $this->nome = $newer['nome'];
+    public function mergeData($older) {
+        if (!$this->nome) {
+            $this->nome = $older->nome;
         }
-        if ($newer['descricao']) {
-            $this->descricao = $newer['descricao'];
+        if (!$this->descricao) {
+            $this->descricao = $older->descricao;
         }
-        if ($newer['email']) {
-            $this->email = $newer['email'];
+        if (!$this->email) {
+            $this->email = $older->email;
         }
-        if ($newer['area']) {
-            $this->area = $newer['area'];
+        if (!$this->area) {
+            $this->area = $older->area;
         }
-        if ($newer['senha']) {
-            $this->senha = $newer['senha'];
+        if (!$this->senha) {
+            $this->senha = $older->senha;
         }
-        if ($newer['telefone']) {
-            $this->telefone = $newer['telefone'];
+        if (!$this->telefone) {
+            $this->telefone = $older->telefone;
         }
-        if ($newer['cnpj']) {
-            $this->cnpj = $newer['cnpj'];
+        if (!$this->cnpj) {
+            $this->cnpj = $older->cnpj;
         }
     }
 

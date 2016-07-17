@@ -14,7 +14,6 @@ class Usuario extends Entidade {
     var $dataN;
     var $email;
     var $link;
-    var $senha;
     var $telefone;
 
     public function __construct(array $data = []) {
@@ -22,7 +21,6 @@ class Usuario extends Entidade {
         $this->dataN = $data['dataN'];
         $this->email = $data['email'];
         $this->link = $data['link'];
-        $this->senha = $data['senha'];
         $this->id = $data['id'];
         $this->telefone = $data['telefone'];
     }
@@ -31,24 +29,21 @@ class Usuario extends Entidade {
         return ".u";
     }
 
-    public function updateData($newer = array()) {
-        if ($newer['nome']) {
-            $this->nome = $newer['nome'];
+    public function mergeData($older) {
+        if (!$this->nome) {
+            $this->nome = $older->nome;
         }
-        if ($newer['dataN']) {
-            $this->dataN = $newer['dataN'];
+        if (!$this->dataN) {
+            $this->dataN = $older->dataN;
         }
-        if ($newer['email']) {
-            $this->email = $newer['email'];
+        if (!$this->email) {
+            $this->email = $older->email;
         }
-        if ($newer['link']) {
-            $this->link = $newer['link'];
+        if (!$this->link) {
+            $this->link = $older->link;
         }
-        if ($newer['senha']) {
-            $this->senha = $newer['senha'];
-        }
-        if ($newer['telefone']) {
-            $this->telefone = $newer['telefone'];
+        if (!$this->telefone) {
+            $this->telefone = $older->telefone;
         }
     }
 

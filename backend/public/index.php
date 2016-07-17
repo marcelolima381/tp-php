@@ -1,10 +1,13 @@
 <?php
 
 require_once '../vendor/autoload.php';
+
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
 define("DB", "../data/");
+define("CRED", "../credentials/");
+define("HOST", "localhost:8080");
 
 $app = new \Slim\App();
 header("Access-Control-Allow-Origin: *");
@@ -37,9 +40,14 @@ $app->group('/job', function () {
  * "Secure" routes
  */
 $app->group('/register', function () {
-    $this->post('/{type:j}', '\Controller\Register')->add(new \Middleware\AuthMiddleware());
+    $this->post('/{type:j}', '\Controller\Register')->setName('registerJob')->add(new \Middleware\AuthMiddleware());
     $this->post('/{type:[u|c]}', '\Controller\Register');
 });
-$app->patch('/alter/{type:[u|e|v]}/{id:[0-9]+}', '\Controller\Alter')->add(new \Middleware\AuthMiddleware());
+$app->patch('/alter/{type:[u|c|j]}/{id:[0-9]+}', '\Controller\Alter')->setName('patch')->add(new \Middleware\AuthMiddleware());
+
+/**
+ * Rota de Login
+ */
+$app->post('/login', '\Controller\Login');
 
 $app->run();
