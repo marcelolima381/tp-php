@@ -8,13 +8,17 @@
 - [x] Overview do usuário
 
 ## Persistência
-- [ ] Definir esquema dos dados
+- [x] Definir esquema dos dados
 - [ ] Funções de _write_, _read_ e _search_
 
 ## Rotas
 - [ ] Get empresa
-- [ ] Get proletário
+- [x] Get proletário
 - [ ] Get vagas
+- [ ] Cadastrar empresa
+- [x] Cadastrar proletário
+- [ ] Cadastrar vaga
 - [ ] Autenticar login
 
 ## Plus +
+- [ ] Middleware para autenticação JWT

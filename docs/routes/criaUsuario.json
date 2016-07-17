@@ -1,0 +1,20 @@
+{
+    "request": {
+        "nome": "(string)",
+        "link": "(string)",
+        "dataN": "(string)[DD/MM/AAAA]",
+        "telefone": "(string)",
+        "email": "(string)",
+        "senha" : "(string)",
+        "id" : "(string)"
+    },
+    "response": {
+        "nome": "(string)",
+        "link": "(string)",
+        "dataN": "(string)[DD/MM/AAAA]",
+        "telefone": "(string)",
+        "email": "(string)",
+        "gravatar" : "(string)"
+    }
+}
+

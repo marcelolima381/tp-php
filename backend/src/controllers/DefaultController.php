@@ -5,13 +5,13 @@ namespace Controller;
 /**
  * Superclasse dos controllers
  *
- * @author Ariel
- */
+ * @author asantos07
+*/
 abstract class DefaultController {
 
     protected $ci;
 
-    public function __construct(ContainerInterface $ci) {
+    public function __construct(\Slim\Container $ci) {
         $this->ci = $ci;
     }
 

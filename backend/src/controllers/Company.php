@@ -3,24 +3,23 @@
 namespace Controller;
 
 /**
- * Trata as rotas de usuários
+ * Description of Company
  *
- * @author asantos07
-*/
-class User extends DefaultController {
+ * asantos07*/
+class Company {
 
     public function __invoke($request, $response, $args) {
         if ($args['range']) {
-            $users = $this->getByRange($args['range']);
-            if ($users) {
-                return $response->withJson($users);
+            $companies = $this->getByRange($args['range']);
+            if ($companies) {
+                return $response->withJson($companies);
             } else {
                 return $response->withStatus(404);
             }
         } elseif ($args['id']) {
-            $user = $this->getById($args['id']);
-            if ($user) {
-                return $response->withJson($user);
+            $company = $this->getById($args['id']);
+            if ($company) {
+                return $response->withJson($company);
             } else {
                 return $response->withStatus(404);
             }
@@ -30,12 +29,12 @@ class User extends DefaultController {
     /**
      * 
      * @param int $id
-     * @return Usuario Retorna Usuario se houver, se não retorna NULL
+     * @return Empresa Retorna Empresa se houver, se não retorna NULL
      */
     private function getById($id) {
-        $user = \Persistence\Persist::readObject($id, \Entity\Usuario::getExt());
-        if ($user) {
-            return $user;
+        $company = \Persistence\Persist::readObject($id, \Entity\Empresa::getExt());
+        if ($company) {
+            return $company;
         } else {
             return null;
         }
@@ -44,7 +43,7 @@ class User extends DefaultController {
     /**
      * 
      * @param string $range
-     * @return array(User) Retorna array de Usuario se houver, se não retorna NULL
+     * @return array(Empresa) Retorna array de Empresa se houver, se não retorna NULL
      */
     private function getByRange($range) {
         $bounds = [];
@@ -52,9 +51,9 @@ class User extends DefaultController {
         if ($bounds[1] >= $bounds[2]) {
             return NULL;
         }
-        $users = \Persistence\Persist::readObjectRange($bounds[2], $bounds[1], \Entity\Usuario::getExt());
-        if ($users) {
-            return $users;
+        $companies = \Persistence\Persist::readObjectRange($bounds[2], $bounds[1], \Entity\Empresa::getExt());
+        if ($companies) {
+            return $companies;
         } else {
             return NULL;
         }

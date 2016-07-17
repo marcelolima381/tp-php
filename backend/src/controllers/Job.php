@@ -3,24 +3,23 @@
 namespace Controller;
 
 /**
- * Trata as rotas de usuários
+ * Description of Job
  *
- * @author asantos07
-*/
-class User extends DefaultController {
+ * asantos07*/
+class Job {
 
     public function __invoke($request, $response, $args) {
         if ($args['range']) {
-            $users = $this->getByRange($args['range']);
-            if ($users) {
-                return $response->withJson($users);
+            $jobs = $this->getByRange($args['range']);
+            if ($jobs) {
+                return $response->withJson($jobs);
             } else {
                 return $response->withStatus(404);
             }
         } elseif ($args['id']) {
-            $user = $this->getById($args['id']);
-            if ($user) {
-                return $response->withJson($user);
+            $job = $this->getById($args['id']);
+            if ($job) {
+                return $response->withJson($job);
             } else {
                 return $response->withStatus(404);
             }
@@ -30,12 +29,12 @@ class User extends DefaultController {
     /**
      * 
      * @param int $id
-     * @return Usuario Retorna Usuario se houver, se não retorna NULL
+     * @return Vaga Retorna Vaga se houver, se não retorna NULL
      */
     private function getById($id) {
-        $user = \Persistence\Persist::readObject($id, \Entity\Usuario::getExt());
-        if ($user) {
-            return $user;
+        $job = \Persistence\Persist::readObject($id, \Entity\Vaga::getExt());
+        if ($job) {
+            return $job;
         } else {
             return null;
         }
@@ -44,7 +43,7 @@ class User extends DefaultController {
     /**
      * 
      * @param string $range
-     * @return array(User) Retorna array de Usuario se houver, se não retorna NULL
+     * @return array(Vaga) Retorna array de Vaga se houver, se não retorna NULL
      */
     private function getByRange($range) {
         $bounds = [];
@@ -52,9 +51,9 @@ class User extends DefaultController {
         if ($bounds[1] >= $bounds[2]) {
             return NULL;
         }
-        $users = \Persistence\Persist::readObjectRange($bounds[2], $bounds[1], \Entity\Usuario::getExt());
-        if ($users) {
-            return $users;
+        $jobs = \Persistence\Persist::readObjectRange($bounds[2], $bounds[1], \Entity\Vaga::getExt());
+        if ($jobs) {
+            return $jobs;
         } else {
             return NULL;
         }
