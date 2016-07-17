@@ -7,7 +7,7 @@ namespace Entity;
  * Esquema de arquivo é [id].c
  *
  * @author asantos07
-*/
+ */
 class Empresa extends Entidade {
 
     var $nome;
@@ -17,6 +17,8 @@ class Empresa extends Entidade {
     var $area;
     var $cnpj;
     var $telefone;
+    var $emailV;
+
     /**
      *
      * @var array Array q armazena os IDs das vagas associadas a essa empresa
@@ -33,6 +35,7 @@ class Empresa extends Entidade {
         $this->cnpj = $data->cnpj;
         $this->telefone = $data->telefone;
         $this->vagas = [];
+        $this->emailV = false;
     }
 
     static public function getExt() {
@@ -61,10 +64,18 @@ class Empresa extends Entidade {
         if (!$this->cnpj) {
             $this->cnpj = $older->cnpj;
         }
+        if (!$this->emailV) {
+            $this->emailV = $older->emailV;
+        }
     }
-    
-    public function addVaga(\Entity\Vaga $vaga){
+
+    public function addVaga(\Entity\Vaga $vaga) {
         $this->vagas[] = $vaga->getId();
+    }
+
+    public function emailVerified() {
+        $this->emailV = TRUE;
+        $this->flush();
     }
 
 }

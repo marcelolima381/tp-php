@@ -15,6 +15,7 @@ class Usuario extends Entidade {
     var $email;
     var $link;
     var $telefone;
+    var $emailV;
 
     public function __construct(array $data = []) {
         $this->nome = $data['nome'];
@@ -23,6 +24,7 @@ class Usuario extends Entidade {
         $this->link = $data['link'];
         $this->id = $data['id'];
         $this->telefone = $data['telefone'];
+        $this->emailV = false;
     }
 
     static public function getExt() {
@@ -45,6 +47,14 @@ class Usuario extends Entidade {
         if (!$this->telefone) {
             $this->telefone = $older->telefone;
         }
+        if (!$this->emailV) {
+            $this->emailV = $older->emailV;
+        }
+    }
+    
+    public function emailVerified() {
+        $this->emailV = TRUE;
+        $this->flush();
     }
 
 }

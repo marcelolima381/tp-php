@@ -40,6 +40,7 @@ app.config(['$routeProvider', function($routeProvider) {
             .when("/adduser", {
                 templateUrl: "templates/cadastro-user.html",
                 controller: "userCadastroController",
+                controllerAs: "controller"
             })
             // route for the skills page
             .otherwise(
@@ -104,22 +105,26 @@ app.controller("menuController", function ($scope) {
 
 app.controller('userCadastroController', ['$sce', '$scope', '$location', 'Service', function ($sce, $scope, $location, service) {
     var self = this;
+    self.id;
 
     service.get(hostAddress + '/user/available', function (answer) {
-        $scope.id = answer;
+        self.id = answer;
     });
 
     $scope.newUser = function (user) {
-        if (user.senha != user.senhaConfirm) {
+        user.id = self.id;
+        if (user.senha !== user.senhaConfirm) {
             alert("Senhas não batem!");
             return;
         }
         service.post(hostAddress + '/register/u', user, function (answer) {
             if (answer.id !== null)
                 alert("Cadastrado com sucesso");
-            else
+            else{
                 alert("Erro!");
+                $location.path('/');
+            }
         });
-    }
+    };
 
 }]);

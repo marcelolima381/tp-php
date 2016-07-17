@@ -23,11 +23,13 @@ class Register extends DefaultController {
                 $file = fopen(CRED . $filename, "w");
                 fwrite($file, md5($parsedBody['senha']));
                 fclose($file);
+                \Helper\Mailer::registrationConfirm($entidade);
             } elseif ($parsedBody['empresaId']) {
                 $empresa = \Persistence\Persist::readObject($parsedBody['empresaId'], \Entity\Empresa::getExt());
                 $empresa->addVaga($entidade);
                 $empresa->flush();
             }
+            \Persistence\AutoIncrement::increment($entidade->getExt());
             return $response->withStatus(201);
         }
     }

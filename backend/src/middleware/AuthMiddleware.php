@@ -21,7 +21,7 @@ class AuthMiddleware {
         $arguments = $route->getArguments();
         $name = $route->getName();
         if (PHP_SESSION_ACTIVE != session_status() || "auth" == session_name()) {
-            return $response->withStatus (303)->withHeader ("Location", HOST . "/login");
+            return $response->withStatus (303)->withHeader ("Location", HOST . "/frontend/#/login");
         } elseif (self::ACC_LEVEL[$name] == $_SESSION["userType"]) {
             if($name == "registerJob") {
                 $empresa = \Persistence\Persist::readObject($body['empresaId'], \Entity\Empresa::getExt());

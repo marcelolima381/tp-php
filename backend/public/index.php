@@ -7,7 +7,7 @@ use \Psr\Http\Message\ResponseInterface as Response;
 
 define("DB", "../data/");
 define("CRED", "../credentials/");
-define("HOST", "localhost:8080");
+define("HOST", "http://localhost:8080");
 
 $app = new \Slim\App();
 header("Access-Control-Allow-Origin: *");
@@ -36,6 +36,7 @@ $app->group('/job', function () {
     $this->get('[/{range:[0-9]+-[0-9]+}]', '\Controller\Job');
     $this->get('/{id:[0-9]+}', '\Controller\Job');
 });
+$app->get('/verify/{type:[u|c]}/{id:[0-9]+}', '\Controller\EmailVerify');
 
 /**
  * "Secure" routes

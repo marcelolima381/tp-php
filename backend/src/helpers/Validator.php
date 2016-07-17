@@ -10,7 +10,7 @@ namespace Helper;
 class Validator {
 
     public static function checkUser($data = array()) {
-        if (isset($data['nome'], $data['dataN'], $data['email'], $data['link'], $data['senha'], $data['telefone'], $data['id'])) {
+        if (isset($data['nome'], $data['dataN'], $data['email'], $data['senha'], $data['telefone'], $data['id'])) {
             return TRUE;
         } else {
             return FALSE;
