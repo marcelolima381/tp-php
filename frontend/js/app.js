@@ -13,9 +13,9 @@ app.config(['$routeProvider', function($routeProvider) {
                 controller: "mainController",
                 controllerAs: "mc"
             })
-            .when("/lg", {
+            .when("/listagem", {
                 templateUrl: "templates/listagem.html",
-                controller: "mainController",
+                controller: "listController",
             })
             .when("/ov", {
                 templateUrl: "templates/overview-vaga.html",
@@ -83,7 +83,21 @@ app.factory('Service', function($http) {
 
 
 app.controller("mainController", function ($scope) {
-    this.a = 0;
+});
+
+
+app.controller("listController", ['Service', function (service) {
+
+  service.get(hostAddress + '/user', function (answer) {
+      self.user = answer;
+  });
+  service.get(hostAddress + '/company', function (answer) {
+      self.comp = answer;
+  });
+  service.get(hostAddress + '/job', function (answer) {
+      self.vaga = answer;
+  });
+
 });
 
 app.controller("menuController", function ($scope) {
