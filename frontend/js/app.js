@@ -39,8 +39,8 @@ app.config(['$routeProvider', function($routeProvider) {
             })
             .when("/adduser", {
                 templateUrl: "templates/cadastro-user.html",
-                controller: "userCadastroController",
-                controllerAs: "controller"
+                controller: "adduserController",
+                controllerAs: "auc"
             })
             // route for the skills page
             .otherwise(
@@ -94,7 +94,7 @@ app.controller("menuController", function ($scope) {
 
     self.links [0] = {
         name: "Cadastro",
-        link: "add"
+        link: "adduser"
     };
     self.links [1] = {
         name: "Login",
@@ -103,7 +103,7 @@ app.controller("menuController", function ($scope) {
 
 });
 
-app.controller('userCadastroController', ['$sce', '$scope', '$location', 'Service', function ($sce, $scope, $location, service) {
+app.controller('adduserController', ['Service', function (service) {
     var self = this;
     self.id;
 
