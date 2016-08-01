@@ -13,9 +13,9 @@ app.config(['$routeProvider', function($routeProvider) {
                 controller: "mainController",
                 controllerAs: "mc"
             })
-            .when("/lg", {
+            .when("/listagem", {
                 templateUrl: "templates/listagem.html",
-                controller: "mainController",
+                controller: "listController",
             })
             .when("/ov", {
                 templateUrl: "templates/overview-vaga.html",
@@ -39,8 +39,8 @@ app.config(['$routeProvider', function($routeProvider) {
             })
             .when("/adduser", {
                 templateUrl: "templates/cadastro-user.html",
-                controller: "userCadastroController",
-                controllerAs: "controller"
+                controller: "adduserController",
+                controllerAs: "auc"
             })
             // route for the skills page
             .otherwise(
@@ -83,7 +83,21 @@ app.factory('Service', function($http) {
 
 
 app.controller("mainController", function ($scope) {
-    this.a = 0;
+});
+
+
+app.controller("listController", ['Service', function (service) {
+
+  service.get(hostAddress + '/user', function (answer) {
+      self.user = answer;
+  });
+  service.get(hostAddress + '/company', function (answer) {
+      self.comp = answer;
+  });
+  service.get(hostAddress + '/job', function (answer) {
+      self.vaga = answer;
+  });
+
 });
 
 app.controller("menuController", function ($scope) {
@@ -94,7 +108,7 @@ app.controller("menuController", function ($scope) {
 
     self.links [0] = {
         name: "Cadastro",
-        link: "add"
+        link: "adduser"
     };
     self.links [1] = {
         name: "Login",
@@ -103,7 +117,7 @@ app.controller("menuController", function ($scope) {
 
 });
 
-app.controller('userCadastroController', ['$sce', '$scope', '$location', 'Service', function ($sce, $scope, $location, service) {
+app.controller('adduserController', ['Service', function (service) {
     var self = this;
     self.id;
 
