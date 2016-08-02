@@ -9,7 +9,7 @@ namespace Controller;
  */
 class Register extends DefaultController {
 
-	public function __invoke(\Slim\Http\Request $request, \Slim\Http\Response $response, $args) {
+    public function __invoke(\Slim\Http\Request $request, \Slim\Http\Response $response, $args) {
         $parsedBody = $request->getParsedBody();
         $entidade = \Helper\Validator::validadeCreate($args['type'], $parsedBody);
         if ($entidade == null) {
@@ -17,22 +17,27 @@ class Register extends DefaultController {
         } elseif (\Persistence\Persist::readObject($entidade->getId(), $entidade->getExt()) || \Persistence\AutoIncrement::get($entidade->getExt()) != $entidade->getId()) {
             return $response->withStatus(409);
         } else {
-	        if (array_key_exists("senha", $parsedBody)) {
-                $filename = md5($entidade->getId()) . md5($entidade->getExt());
-                $file = fopen(CRED . $filename, "w");
+            if (array_key_exists("senha", $parsedBody)) {
+                // Cria o arquivo de credencial (senha + login)
+                $credfile = md5($entidade->login) . md5($entidade->getExt());
+                $file = fopen(CRED . $credfile, "w");
                 fwrite($file, md5($parsedBody['senha']));
                 fclose($file);
-		        //                \Helper\Mailer::registrationConfirm($entidade);
-            } elseif ($parsedBody['empresaId']) {
+                // Cria o arquivo para mapear login -> id
+                $mapfile = $entidade->getLogin();
+                $file = fopen(LOGIN . $mapfile, "w");
+                fwrite($file, );
+                //                \Helper\Mailer::registrationConfirm($entidade);
+            } elseif (array_key_exists("empresaId", $parsedBody)) {
                 $empresa = \Persistence\Persist::readObject($parsedBody['empresaId'], \Entity\Empresa::getExt());
                 $empresa->addVaga($entidade);
                 $empresa->flush();
-	        } else {
-		        return $response->withStatus(400);
+            } else {
+                return $response->withStatus(400);
             }
-	        $entidade->flush();
+            $entidade->flush();
             \Persistence\AutoIncrement::increment($entidade->getExt());
-	        return $response->withStatus(201)->withJson($entidade);
+            return $response->withStatus(201)->withJson($entidade);
         }
     }
 

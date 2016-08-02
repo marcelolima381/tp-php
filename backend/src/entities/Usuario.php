@@ -11,6 +11,7 @@ namespace Entity;
 class Usuario extends Entidade {
 
     var $nome;
+    var $login;
     var $dataN;
     var $email;
     var $link;
@@ -19,9 +20,10 @@ class Usuario extends Entidade {
 
     public function __construct(array $data = []) {
         $this->nome = $data['nome'];
+        $this->login = $data['login'];
         $this->dataN = $data['dataN'];
         $this->email = $data['email'];
-	    $this->link = (array_key_exists("link", $data) ? $data['link'] : null);
+	$this->link = (array_key_exists("link", $data) ? $data['link'] : null);
         $this->id = $data['id'];
         $this->telefone = $data['telefone'];
         $this->emailV = false;
@@ -33,6 +35,8 @@ class Usuario extends Entidade {
     static public function getExt() {
 	    return ".user";
     }
+    
+    000
 
     public function mergeData($older) {
         if (!$this->nome) {

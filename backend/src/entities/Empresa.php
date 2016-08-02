@@ -11,6 +11,7 @@ namespace Entity;
 class Empresa extends Entidade {
 
     var $nome;
+    var $login;
     var $email;
     var $senha;
     var $descricao;
@@ -26,20 +27,25 @@ class Empresa extends Entidade {
     var $vagas;
 
     public function __construct(array $data = []) {
-        $this->nome = $data->nome;
-        $this->email = $data->email;
-        $this->senha = $data->senha;
-        $this->descricao = $data->descricao;
-        $this->id = $data->id;
-        $this->area = $data->area;
-        $this->cnpj = $data->cnpj;
-        $this->telefone = $data->telefone;
+        $this->nome = $data['nome'];
+        $this->login = $data['login'];
+        $this->email = $data['email'];
+        $this->senha = $data['senha'];
+        $this->descricao = $data['descricao'];
+        $this->id = $data['id'];
+        $this->area = $data['area'];
+        $this->cnpj = $data['cnpj'];
+        $this->telefone = $data['telefone'];
         $this->vagas = [];
         $this->emailV = false;
     }
 
     static public function getExt() {
 	    return ".empresa";
+    }
+    
+    public function getLogin(){
+        return $this->login;
     }
 
     public function mergeData($older) {

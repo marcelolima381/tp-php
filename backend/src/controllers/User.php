@@ -24,9 +24,6 @@ class User extends DefaultController {
             } else {
                 return $response->withStatus(404);
             }
-        }else {
-            $last = \Persistence\AutoIncrement::get(\Entity\Usuario::getExt());
-            return $response->write($last);
         }
     }
 
