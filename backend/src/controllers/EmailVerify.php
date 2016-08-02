@@ -9,12 +9,12 @@ namespace Controller;
  */
 class EmailVerify extends \Controller\DefaultController {
 
-    public function __invoke($request, $response, $args) {
+	public function __invoke(\Slim\Http\Request $request, \Slim\Http\Response $response, $args) {
         switch ($args['type']) {
-            case "u":
+	        case "user":
                 $entidade = \Persistence\Persist::readObject($args['id'], \Entity\Usuario::getExt());
                 break;
-            case "c":
+	        case "company":
                 $entidade = \Persistence\Persist::readObject($args['id'], \Entity\Empresa::getExt());
         }
         $entidade->emailVerified();

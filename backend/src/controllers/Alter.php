@@ -9,7 +9,7 @@ namespace Controller;
  */
 class Alter extends DefaultController {
 
-    public function __invoke($request, $response, $args) {
+	public function __invoke(\Slim\Http\Request $request, \Slim\Http\Response $response, $args) {
         $parsedBody = $request->getParsedBody();
         $entidade = \Helper\Validator::validadeCreate($args['type'], $parsedBody);
         if ($entidade == null) {

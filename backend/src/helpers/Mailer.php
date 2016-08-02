@@ -17,11 +17,11 @@ class Mailer {
         $id = $user->getId();
         $name = $user->nome;
         switch ($user->getExt()) {
-            case ".u":
-                $type = "u";
+	        case ".user":
+		        $type = "user";
                 break;
-            case ".e":
-                $type = "c";
+	        case ".empresa":
+		        $type = "company";
         }
         $registration_route = \HOST . "/verify/" . $type . $id;
 

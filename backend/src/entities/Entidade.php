@@ -21,18 +21,6 @@ abstract class Entidade {
     abstract public function __construct(array $data = []);
 
     /**
-     * Checa se $newer tem algum valor diferente do objeto e sobrepôe a $this.
-     * @param Object $newer
-     */
-    abstract public function mergeData($newer);
-
-    /**
-     * Retorna e extenção do arquivo desse tipo de objeto no 'banco de dados'
-     * @return string
-     */
-    abstract static public function getExt();
-
-    /**
      * Escreve o objeto no 'banco de dados'
      */
     public function flush() {
@@ -44,8 +32,24 @@ abstract class Entidade {
         \Persistence\Persist::writeObject($this);
     }
 
+	/**
+	 * Retorna o ID da entidade
+	 * @return int
+	 */
     public function getId() {
         return $this->id;
     }
+
+	/**
+	 * Retorna e extenção do arquivo desse tipo de objeto no 'banco de dados'
+	 * @return string
+	 */
+	abstract static public function getExt();
+
+	/**
+	 * Checa se $newer tem algum valor diferente do objeto e sobrepôe a $this.
+	 * @param Object $newer
+	 */
+	abstract public function mergeData($newer);
 
 }

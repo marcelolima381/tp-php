@@ -8,7 +8,7 @@ namespace Controller;
  * asantos07*/
 class Job {
 
-    public function __invoke($request, $response, $args) {
+	public function __invoke(\Slim\Http\Request $request, \Slim\Http\Response $response, $args) {
         if (array_key_exists("range", $args)) {
             $jobs = $this->getByRange($args['range']);
             if ($jobs) {
@@ -27,21 +27,7 @@ class Job {
     }
 
     /**
-     * 
-     * @param int $id
-     * @return Vaga Retorna Vaga se houver, se não retorna NULL
-     */
-    private function getById($id) {
-        $job = \Persistence\Persist::readObject($id, \Entity\Vaga::getExt());
-        if ($job) {
-            return $job;
-        } else {
-            return null;
-        }
-    }
-
-    /**
-     * 
+     *
      * @param string $range
      * @return array(Vaga) Retorna array de Vaga se houver, se não retorna NULL
      */
@@ -56,6 +42,20 @@ class Job {
             return $jobs;
         } else {
             return NULL;
+        }
+    }
+
+	/**
+	 *
+	 * @param int $id
+	 * @return Vaga Retorna Vaga se houver, se não retorna NULL
+	 */
+	private function getById($id) {
+		$job = \Persistence\Persist::readObject($id, \Entity\Vaga::getExt());
+		if ($job) {
+			return $job;
+		} else {
+			return null;
         }
     }
 

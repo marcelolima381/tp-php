@@ -9,6 +9,30 @@ namespace Helper;
 */
 class Validator {
 
+	public static function validadeCreate($type, $json_array) {
+		$entidade = null;
+		if ($json_array['id'] < 0) {
+			return NULL;
+		}
+		switch ($type) {
+			case "user":
+				if (Validator::checkUser($json_array)) {
+					$entidade = new \Entity\Usuario($json_array);
+				}
+				break;
+			case "company":
+				if (Validator::checkEmpresa($json_array)) {
+					$entidade = new \Entity\Empresa($json_array);
+				}
+				break;
+			case "job":
+				if (Validator::checkVaga($json_array)) {
+					$entidade = new \Entity\Vaga($json_array);
+				}
+		}
+		return $entidade;
+	}
+
     public static function checkUser($data = array()) {
         if (isset($data['nome'], $data['dataN'], $data['email'], $data['senha'], $data['telefone'], $data['id'])) {
             return TRUE;
@@ -31,30 +55,6 @@ class Validator {
         } else {
             return FALSE;
         }
-    }
-
-    public static function validadeCreate($type, $json_array) {
-        $entidade = null;
-        if($json_array['id'] < 0){
-            return NULL;
-        }
-        switch ($type) {
-            case 'u':
-                if (Validator::checkUser($json_array)) {
-                    $entidade = new \Entity\Usuario($json_array);
-                }
-                break;
-            case 'c':
-                if (Validator::checkEmpresa($json_array)) {
-                    $entidade = new \Entity\Empresa($json_array);
-                }
-                break;
-            case 'j':
-                if (Validator::checkVaga($json_array)) {
-                    $entidade = new \Entity\Vaga($json_array);
-                }
-        }
-        return $entidade;
     }
 
 }

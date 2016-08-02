@@ -4,7 +4,7 @@ namespace Entity;
 
 /**
  * Entidade que representa uma Empresa
- * Esquema de arquivo é [id].c
+ * Esquema de arquivo é [id].empresa
  *
  * @author asantos07
  */
@@ -39,7 +39,7 @@ class Empresa extends Entidade {
     }
 
     static public function getExt() {
-        return ".e";
+	    return ".empresa";
     }
 
     public function mergeData($older) {

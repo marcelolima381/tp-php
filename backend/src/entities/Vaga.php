@@ -4,7 +4,7 @@ namespace Entity;
 
 /**
  * Entidade que representa uma vaga.
- * Esquema de arquivo é [id].v
+ * Esquema de arquivo é [id].vaga
  *
  * @author asantos07
 */
@@ -23,6 +23,10 @@ class Vaga extends Entidade {
         $this->id = $data->id;
     }
 
+	public static function getExt() {
+		return ".vaga";
+	}
+
     public function mergeData($older) {
         if (!$this->titulo) {
             $this->titulo = $older->titulo;
@@ -36,10 +40,6 @@ class Vaga extends Entidade {
         if (!$this->salario) {
             $this->salario = $older->salario;
         }
-    }
-
-    public static function getExt() {
-        return ".v";
     }
 
 }

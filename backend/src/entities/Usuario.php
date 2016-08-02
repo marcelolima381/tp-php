@@ -4,7 +4,7 @@ namespace Entity;
 
 /**
  * Entitade que representa um Usuário comum
- * Esquema de arquivo é [id].u
+ * Esquema de arquivo é [id].user
  *
  * @author asantos07
 */
@@ -21,14 +21,17 @@ class Usuario extends Entidade {
         $this->nome = $data['nome'];
         $this->dataN = $data['dataN'];
         $this->email = $data['email'];
-        $this->link = $data['link'];
+	    $this->link = (array_key_exists("link", $data) ? $data['link'] : null);
         $this->id = $data['id'];
         $this->telefone = $data['telefone'];
         $this->emailV = false;
     }
 
+	/**
+	 * @return string
+	 */
     static public function getExt() {
-        return ".u";
+	    return ".user";
     }
 
     public function mergeData($older) {

@@ -15,5 +15,11 @@ abstract class DefaultController {
         $this->ci = $ci;
     }
 
-    abstract public function __invoke($request, $response, $args);
+	/**
+	 * @param $request
+	 * @param $response
+	 * @param $args
+	 * @return $response
+	 */
+	abstract public function __invoke(\Slim\Http\Request $request, \Slim\Http\Response $response, $args);
 }

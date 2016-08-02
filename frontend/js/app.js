@@ -15,27 +15,27 @@ app.config(['$routeProvider', function($routeProvider) {
             })
             .when("/listagem", {
                 templateUrl: "templates/listagem.html",
-                controller: "listController",
+                controller: "listController"
             })
             .when("/ov", {
                 templateUrl: "templates/overview-vaga.html",
-                controller: "mainController",
+                controller: "mainController"
             })
             .when("/ou", {
                 templateUrl: "templates/overview-usuario.html",
-                controller: "mainController",
+                controller: "mainController"
             })
             .when("/oe", {
                 templateUrl: "templates/overview-empresa.html",
-                controller: "mainController",
+                controller: "mainController"
             })
             .when("/addvaga", {
                 templateUrl: "templates/cadastro-vaga.html",
-                controller: "mc",
+                controller: "mc"
             })
             .when("/addemp", {
                 templateUrl: "templates/cadastro-empresa.html",
-                controller: "mainController",
+                controller: "mainController"
             })
             .when("/adduser", {
                 templateUrl: "templates/cadastro-user.html",
@@ -98,7 +98,7 @@ app.controller("listController", ['Service', function (service) {
       self.vaga = answer;
   });
 
-});
+}]);
 
 app.controller("menuController", function ($scope) {
     var self = this;

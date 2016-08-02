@@ -8,7 +8,7 @@ namespace Controller;
  * asantos07*/
 class Company {
 
-    public function __invoke($request, $response, $args) {
+	public function __invoke(\Slim\Http\Request $request, \Slim\Http\Response $response, $args) {
         if (array_key_exists("range", $args)) {
             $companies = $this->getByRange($args['range']);
             if ($companies) {
@@ -27,21 +27,7 @@ class Company {
     }
 
     /**
-     * 
-     * @param int $id
-     * @return Empresa Retorna Empresa se houver, se não retorna NULL
-     */
-    private function getById($id) {
-        $company = \Persistence\Persist::readObject($id, \Entity\Empresa::getExt());
-        if ($company) {
-            return $company;
-        } else {
-            return null;
-        }
-    }
-
-    /**
-     * 
+     *
      * @param string $range
      * @return array(Empresa) Retorna array de Empresa se houver, se não retorna NULL
      */
@@ -56,6 +42,20 @@ class Company {
             return $companies;
         } else {
             return NULL;
+        }
+    }
+
+	/**
+	 *
+	 * @param int $id
+	 * @return Empresa Retorna Empresa se houver, se não retorna NULL
+	 */
+	private function getById($id) {
+		$company = \Persistence\Persist::readObject($id, \Entity\Empresa::getExt());
+		if ($company) {
+			return $company;
+		} else {
+			return null;
         }
     }
 
