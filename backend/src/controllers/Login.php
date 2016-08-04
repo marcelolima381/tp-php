@@ -24,7 +24,7 @@ class Login extends DefaultController {
 				$ext = \Entity\Empresa::getExt();
 				$type = \Entity\Empresa::class;
 		}
-		$logged = $this->checkCredential($cred['id'], $cred['senha'], $ext);
+		$logged = $this->checkCredential($cred['id'], $cred['passwd'], $ext);
 		if ($logged) {
 			session_start();
 			$_SESSION['userId'] = $cred['id'];

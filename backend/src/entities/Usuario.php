@@ -5,28 +5,36 @@ namespace Entity;
 /**
  * Entitade que representa um Usuário comum
  * Esquema de arquivo é [id].user
- *
+ * 
  * @author asantos07
 */
 class Usuario extends Entidade {
 
-    var $nome;
-    var $login;
-    var $dataN;
+    var $name;
+    var $birthD;
     var $email;
-    var $link;
-    var $telefone;
+    var $telephone;
     var $emailV;
+    var $languages;
+    var $text;
+    var $skills;
+    var $contributions;
+    var $graduation;
+    var $experience;
 
     public function __construct(array $data = []) {
-        $this->nome = $data['nome'];
-        $this->login = $data['login'];
-        $this->dataN = $data['dataN'];
+        $this->name = $data['name'];
+        $this->birthD = $data['birthD'];
         $this->email = $data['email'];
-	$this->link = (array_key_exists("link", $data) ? $data['link'] : null);
         $this->id = $data['id'];
-        $this->telefone = $data['telefone'];
+        $this->telephone = $data['telephone'];
         $this->emailV = false;
+        $this->languages = $data['languages'];
+        $this->text = $data['text'];
+        $this->skills = $data['skills'];
+        $this->contributions = $data['contributions'];
+        $this->graduation = $data['graduation'];
+        $this->experience = $data['experience'];
     }
 
 	/**
@@ -36,27 +44,8 @@ class Usuario extends Entidade {
 	    return ".user";
     }
     
-    000
-
-    public function mergeData($older) {
-        if (!$this->nome) {
-            $this->nome = $older->nome;
-        }
-        if (!$this->dataN) {
-            $this->dataN = $older->dataN;
-        }
-        if (!$this->email) {
-            $this->email = $older->email;
-        }
-        if (!$this->link) {
-            $this->link = $older->link;
-        }
-        if (!$this->telefone) {
-            $this->telefone = $older->telefone;
-        }
-        if (!$this->emailV) {
-            $this->emailV = $older->emailV;
-        }
+    public function getEmail(){
+        return $this->email;
     }
     
     public function emailVerified() {

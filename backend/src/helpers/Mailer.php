@@ -15,7 +15,7 @@ class Mailer {
         $mailer = new \PHPMailer;
         $email = $user->email;
         $id = $user->getId();
-        $name = $user->nome;
+        $name = $user->name;
         switch ($user->getExt()) {
 	        case ".user":
 		        $type = "user";

@@ -36,16 +36,16 @@ $app->group('/job', function () {
     $this->get('[/{range:[0-9]+-[0-9]+}]', '\Controller\Job');
     $this->get('/{id:[0-9]+}', '\Controller\Job');
 });
-$app->get('/verify/{type:[u|c]}/{id:[0-9]+}', '\Controller\EmailVerify');
+$app->get('/verify/{type:user|company}/{id:[0-9]+}', '\Controller\EmailVerify');
 
 /**
  * "Secure" routes
  */
 $app->group('/register', function () {
-    $this->post('/{type:j}', '\Controller\Register')->setName('registerJob')->add(new \Middleware\AuthMiddleware());
-    $this->post('/{type:[u|c]}', '\Controller\Register');
+    $this->post('/{type:job}', '\Controller\Register')->setName('registerJob')->add(new \Middleware\AuthMiddleware());
+    $this->post('/{type:user|company}', '\Controller\Register');
 });
-$app->patch('/alter/{type:[u|c|j]}/{id:[0-9]+}', '\Controller\Alter')->setName('patch')->add(new \Middleware\AuthMiddleware());
+$app->patch('/alter/{type:user|company|job}/{id:[0-9]+}', '\Controller\Alter')->setName('patch')->add(new \Middleware\AuthMiddleware());
 
 /**
  * Rota de Login

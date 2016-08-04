@@ -10,10 +10,9 @@ namespace Entity;
  */
 class Empresa extends Entidade {
 
-    var $nome;
-    var $login;
+    var $name;
     var $email;
-    var $senha;
+    var $passwd;
     var $descricao;
     var $area;
     var $cnpj;
@@ -27,10 +26,9 @@ class Empresa extends Entidade {
     var $vagas;
 
     public function __construct(array $data = []) {
-        $this->nome = $data['nome'];
-        $this->login = $data['login'];
+        $this->name = $data['name'];
         $this->email = $data['email'];
-        $this->senha = $data['senha'];
+        $this->passwd = $data['passwd'];
         $this->descricao = $data['descricao'];
         $this->id = $data['id'];
         $this->area = $data['area'];
@@ -48,31 +46,8 @@ class Empresa extends Entidade {
         return $this->login;
     }
 
-    public function mergeData($older) {
-        if (!$this->nome) {
-            $this->nome = $older->nome;
-        }
-        if (!$this->descricao) {
-            $this->descricao = $older->descricao;
-        }
-        if (!$this->email) {
-            $this->email = $older->email;
-        }
-        if (!$this->area) {
-            $this->area = $older->area;
-        }
-        if (!$this->senha) {
-            $this->senha = $older->senha;
-        }
-        if (!$this->telefone) {
-            $this->telefone = $older->telefone;
-        }
-        if (!$this->cnpj) {
-            $this->cnpj = $older->cnpj;
-        }
-        if (!$this->emailV) {
-            $this->emailV = $older->emailV;
-        }
+    public function getEmail(){
+        return $this->email;
     }
 
     public function addVaga(\Entity\Vaga $vaga) {

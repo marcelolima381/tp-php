@@ -6,7 +6,7 @@ namespace Entity;
  * Superclasse que define os métodos básicos das entidades
  *
  * @author asantos07
-*/
+ */
 abstract class Entidade {
 
     /**
@@ -24,32 +24,20 @@ abstract class Entidade {
      * Escreve o objeto no 'banco de dados'
      */
     public function flush() {
-        $previous = \Persistence\Persist::readObject($this->getId(), $this->getExt());
-        if ($previous) {
-            $this->mergeData($previous);
-            echo json_encode($this);
-        }
         \Persistence\Persist::writeObject($this);
     }
 
-	/**
-	 * Retorna o ID da entidade
-	 * @return int
-	 */
+    /**
+     * Retorna o ID da entidade
+     * @return int
+     */
     public function getId() {
         return $this->id;
     }
 
-	/**
-	 * Retorna e extenção do arquivo desse tipo de objeto no 'banco de dados'
-	 * @return string
-	 */
-	abstract static public function getExt();
-
-	/**
-	 * Checa se $newer tem algum valor diferente do objeto e sobrepôe a $this.
-	 * @param Object $newer
-	 */
-	abstract public function mergeData($newer);
-
+    /**
+     * Retorna e extenção do arquivo desse tipo de objeto no 'banco de dados'
+     * @return string
+     */
+    abstract static public function getExt();
 }

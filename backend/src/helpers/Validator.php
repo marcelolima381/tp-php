@@ -34,7 +34,7 @@ class Validator {
 	}
 
     public static function checkUser($data = array()) {
-        if (isset($data['nome'], $data['dataN'], $data['email'], $data['senha'], $data['telefone'], $data['id'])) {
+        if (isset($data['passwd'], $data['name'], $data['birthD'], $data['email'], $data['id'], $data['telephone'], $data['emailV'], $data['languages'], $data['text'], $data['skills'], $data['contributions'], $data['graduation'], $data['experience'])) {
             return TRUE;
         } else {
             return FALSE;
@@ -42,7 +42,7 @@ class Validator {
     }
 
     public static function checkEmpresa($data = array()) {
-        if (isset($data['nome'], $data['email'], $data['senha'], $data['descricao'], $data['area'], $data['cnpj'], $data['telefone'], $data['id'])) {
+        if (isset($data['name'], $data['email'], $data['passwd'], $data['descricao'], $data['area'], $data['cnpj'], $data['telefone'], $data['id'])) {
             return TRUE;
         } else {
             return FALSE;
