@@ -19,6 +19,7 @@ class Register extends DefaultController {
             return $response->withStatus(409);
         } else {
             if (array_key_exists("passwd", $parsedBody)) {
+                $parsedBody['emailV'] = FALSE;
                 // Cria o arquivo de credencial (passwd + login)
                 $credfile = md5($entidade->login) . md5($entidade->getExt());
                 $file = fopen(CRED . $credfile, "w");
@@ -43,15 +44,16 @@ class Register extends DefaultController {
         }
     }
 
-    private function emailBelongs($id, $email){
-        if(!file_exists(LOGIN . $email)){
+    private function emailBelongs($id, $email) {
+        if (!file_exists(LOGIN . $email)) {
             return 0;
         }
         $idEmail = file_get_contents(LOGIN . $email);
-        if($email == $idEmail){
+        if ($email == $idEmail) {
             return 1;
-        }else {
+        } else {
             return -1;
         }
     }
+
 }
