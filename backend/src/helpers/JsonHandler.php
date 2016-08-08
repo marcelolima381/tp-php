@@ -25,17 +25,17 @@ class JsonHandler {
             return $result;
         }
 
-        throw new RuntimeException(static::$_messages[json_last_error()]);
+        throw new \RuntimeException(static::$_messages[json_last_error()]);
     }
 
     public static function decode($json, $assoc = false) {
         $result = json_decode($json, $assoc);
-
+        echo $result;
         if($result) {
             return $result;
         }
 
-        throw new RuntimeException(static::$_messages[json_last_error()]);
+        throw new \RuntimeException(static::$_messages[json_last_error()]);
     }
 
 }

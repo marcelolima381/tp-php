@@ -39,7 +39,7 @@ class Empresa extends Entidade {
     }
 
     static public function getExt() {
-	    return ".empresa";
+	    return ".company";
     }
     
     public function getLogin(){
