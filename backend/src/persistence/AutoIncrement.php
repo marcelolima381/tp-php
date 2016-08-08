@@ -18,7 +18,6 @@ class AutoIncrement {
     static public function increment($type) {
         $filename = DB . "auto_increment" . $type;
         $file = (int) file_get_contents($filename);
-        echo $file;
         $file = $file + 1;
         $newfile = fopen($filename, "w");
         fwrite($newfile, $file);

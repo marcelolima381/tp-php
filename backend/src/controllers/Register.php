@@ -12,25 +12,26 @@ class Register extends DefaultController {
     public function __invoke(\Slim\Http\Request $request, \Slim\Http\Response $response, $args) {
         $parsedBody = $request->getParsedBody();
         $parsedBody['id'] = \Persistence\AutoIncrement::get($args['type']);
-        $entidade = \Helper\Validator::validadeCreate($args['type'], $parsedBody);
+        $entidade = \Helper\Validator::validadeCreateBasic($args['type'], $parsedBody);
         if ($entidade == null) {
             return $response->withStatus(400);
         } elseif ($this->emailBelongs($parsedBody['id'], $parsedBody['email'])) {
             return $response->withStatus(409);
         } else {
             if (array_key_exists("passwd", $parsedBody)) {
-                $parsedBody['emailV'] = FALSE;
                 // Cria o arquivo de credencial (passwd + login)
-                $credfile = md5($entidade->login) . md5($entidade->getExt());
+                $credfile = md5($entidade->id) . md5($entidade->getExt());
                 $file = fopen(CRED . $credfile, "w");
                 fwrite($file, md5($parsedBody['passwd']));
                 fclose($file);
                 // Cria o arquivo para mapear email -> id
-                $mailfile = $entidade->getEmail();
-                $file = fopen(LOGIN . $mailfile, "w");
-                fwrite($file, $mailfile);
-                fclose($file);
-                //                \Helper\Mailer::registrationConfirm($entidade);
+                $mapObj = new \stdClass();
+                $mapObj->id = $entidade->getId();
+                $mapObj->type = $args['type'];
+                $file2 = fopen(LOGIN . $entidade->getEmail(), "w");
+                fwrite($file2, \Helper\JsonHandler::encode($mapObj));
+                fclose($file2);
+                // \Helper\Mailer::registrationConfirm($entidade);
             } elseif (array_key_exists("empresaId", $parsedBody)) {
                 $empresa = \Persistence\Persist::readObject($parsedBody['empresaId'], \Entity\Empresa::getExt());
                 $empresa->addVaga($entidade);

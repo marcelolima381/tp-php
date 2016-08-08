@@ -20,7 +20,7 @@ class Mailer {
 	        case ".user":
 		        $type = "user";
                 break;
-	        case ".empresa":
+	        case ".company":
 		        $type = "company";
         }
         $registration_route = \HOST . "/verify/" . $type . $id;
