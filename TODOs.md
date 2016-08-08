@@ -9,16 +9,16 @@
 
 ## Persistência
 - [x] Definir esquema dos dados
-- [ ] Funções de _write_, _read_ e _search_
+- [x] Funções de _write_, _read_ e _search_
 
 ## Rotas
-- [ ] Get empresa
+- [x] Get empresa
 - [x] Get proletário
 - [ ] Get vagas
-- [ ] Cadastrar empresa
+- [x] Cadastrar empresa
 - [x] Cadastrar proletário
 - [ ] Cadastrar vaga
-- [ ] Autenticar login
+- [x] Autenticar login
 
 ## Plus +
-- [ ] Middleware para autenticação JWT
+- [x] Middleware para autenticação (com SESSION+COOKIE)
