@@ -43,7 +43,19 @@
                 </div> -->
             </div>
 
-            
+            <form name="skillForm" ng-submit="submitSkillForm(skillForm.$valid)" novalidate>
+                <!-- nome -->
+                <div class="form-group">
+                    <label>Habilidade</label>
+                    <input type="text" name="name" class="form-control" ng-model="user.skill.name">
+                </div>
+                <!-- valor -->
+                <div class="form-group">
+                    <label>Valor</label>
+                    <input type="text" name="value" class="form-control" ng-model="user.skill.value">
+                </div>
+            </form>
+
 
             <!-- <div class="well"> -->
                 <h3>Languages</h3>

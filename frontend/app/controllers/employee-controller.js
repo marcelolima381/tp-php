@@ -2,6 +2,10 @@
   angular.module("jobFinder").controller('employeeController', ['$scope', '$location', '$http', function($scope, $location, $http) {
       // Definindo objeto que armazena as informações do usuário
       $scope.user = {};
+      $scope.user.name = "marcelo";
+
+      $scope.user.skills = [];
+
       // GET dados do usuário
       $http({
         method: 'GET',

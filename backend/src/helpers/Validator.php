@@ -59,6 +59,7 @@ class Validator {
                 $json_array['cnpj'] = NULL;
                 $json_array['telephone'] = NULL;
                 $json_array['emailV'] = FALSE;
+                $json_array['jobs'] = [];
                 if (Validator::checkEmpresa($json_array)) {
                     $entidade = new \Entity\Empresa($json_array);
                 }
@@ -81,7 +82,7 @@ class Validator {
     }
 
     public static function checkEmpresa($data = array()) {
-        if(array_key_exists('name', $data) && array_key_exists('email', $data) && array_key_exists('passwd', $data) && array_key_exists('description', $data) && array_key_exists('area', $data) && array_key_exists('cnpj', $data) && array_key_exists('telephone', $data) && array_key_exists('id', $data) && array_key_exists('emailV', $data)){
+        if(array_key_exists('name', $data) && array_key_exists('email', $data) && array_key_exists('passwd', $data) && array_key_exists('description', $data) && array_key_exists('area', $data) && array_key_exists('cnpj', $data) && array_key_exists('telephone', $data) && array_key_exists('id', $data) && array_key_exists('emailV', $data) && array_key_exists('jobs', $data)){
              return TRUE;
         } else {
             return FALSE;

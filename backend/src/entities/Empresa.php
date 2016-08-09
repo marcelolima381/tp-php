@@ -23,7 +23,7 @@ class Empresa extends Entidade {
      *
      * @var array Array q armazena os IDs das vagas associadas a essa empresa
      */
-    var $vagas;
+    var $jobs;
 
     public function __construct(array $data = []) {
         $this->name = $data['name'];
@@ -48,10 +48,6 @@ class Empresa extends Entidade {
 
     public function getEmail(){
         return $this->email;
-    }
-
-    public function addVaga(\Entity\Vaga $vaga) {
-        $this->vagas[] = $vaga->getId();
     }
 
     public function emailVerified() {

@@ -9,34 +9,33 @@ namespace Middleware;
  */
 class AuthMiddleware {
 
-//	const ACC_LEVEL = ["registerJob" => \Entity\Empresa::class, "patch" => "owner"];
-
-	public function __invoke($request, $response, $next) {
-//		$body = $request->getParsedBody();
-//		$route = $request->getAttribute('route');
-//		$arguments = $route->getArguments();
-//		$name = $route->getName();
-//		if (PHP_SESSION_ACTIVE != session_status() || "auth" == session_name()) {
-//			return $response->withStatus(303)->withHeader("Location", HOST . "/frontend/#/login");
-//		} elseif (self::ACC_LEVEL[$name] == $_SESSION["userType"]) {
-//			if ($name == "registerJob") {
-//				$empresa = \Persistence\Persist::readObject($body['empresaId'], \Entity\Empresa::getExt());
-//				if ($empresa && $empresa->getId() == $_SESSION['userId']) {
-//					$next($request, $response);
-//				} else {
-//					return $response->withStatus(401);
-//				}
-//			} else {
-//				$next($request, $response);
-//			}
-//		} elseif (self::ACC_LEVEL[$name] == "owner") {
-//			if (($arguments['id'] == $_SESSION['userId'] && $body['id'] == $_SESSION['userId']) || ($arguments['empresaId'] == $_SESSION['userId'] && $body['empresaId'] == $_SESSION['userId'])) {
-//				$next($request, $response);
-//			} else {
-//				return $response->withStatus(401);
-//			}
-//		}
-//		return $response;
-	}
+    public function __invoke($request, $response, $next) {
+        $body = $request->getParsedBody();
+        $route = $request->getAttribute('route');
+        $arguments = $route->getArguments();
+        $name = $route->getName();
+        session_start();
+        if (PHP_SESSION_ACTIVE != session_status()) {
+            return $response->withStatus(303)->write(var_dump(session_name()));
+//            ->withHeader("Location", HOST . "/frontend/#/login");
+        } else {
+            if ($name == 'registerJob') {
+                $empresa = \Persistence\Persist::readObject($body['empresaId'], \Entity\Empresa::getExt());
+                if ($empresa && $empresa->getId() == $_SESSION['userId'] && $_SESSION['userType'] == 'company') {
+                    $next($request, $response);
+                } else {
+                    return $response->withStatus(401);
+                }
+            } elseif ($name == 'patch') {
+                $entidade = \Persistence\Persist::readObject($body['empresaId'], '.' . $arguments['type']);
+                if ($entidade && $entidade->getId() == $_SESSION['userId'] && $_SESSION['userType'] == $arguments['type']) {
+                    $next($request, $response);
+                } else {
+                    return $response->withStatus(401);
+                }
+            }
+        }
+        return $response;
+    }
 
 }
