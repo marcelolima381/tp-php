@@ -1,0 +1,13 @@
+body {
+  background-image: url('../img/1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+ul.nav li.navbar-notifications {
+  font-weight: bold;
+}
+
+ul.nav li.navbar-notifications:hover {
+  cursor: pointer;
+}

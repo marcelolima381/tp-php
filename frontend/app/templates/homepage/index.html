@@ -1,0 +1,140 @@
+<link rel="stylesheet" href="css/homepage.css" type="text/css">
+
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand page-scroll" href="#page-top">JobFinder</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a class="page-scroll" href="#about">Who we are</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#services">How JF works</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#contact">Contact</a>
+                </li>
+                <li>
+                    <a class="page-scroll" ng-click="go('/auth/login')">Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<header>
+    <div class="header-content">
+        <div class="header-content-inner">
+            <h1>JobFinder</h1>
+            <hr>
+            <p><strong>Be prepared for the market changes by joining our community. Look at the best job for you in the best place to.</strong></p>
+            <a href="#about" class="btn btn-primary btn-xl page-scroll bounce">Find Out More</a>
+        </div>
+    </div>
+</header>
+
+<section class="bg-primary" id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 text-center">
+                <h2 class="section-heading">Who we are</h2>
+                <hr class="light">
+                <p class="text-faded">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <a href="#services" class="page-scroll btn btn-default btn-xl sr-button">How JF works</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="services">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-12 text-center">
+              <h2 class="section-heading">How JF works</h2>
+              <hr class="primary">
+          </div>
+      </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-xs-12 text-center">
+        <div class="service-box">
+
+          <i class="fa fa-5x fa-check text-primary sr-icons"></i>
+          <!-- <img src="img/1.jpg" class="img-reponsive img-circle sr-icons" style="widht: 250px; height: 250px" alt="" /> -->
+          <h3>The best opportunity awaits for you</h3>
+          <p class="text-muted">A lot of renowned companies are looking for professionals with your profile</p>
+        </div>
+      </div>
+      <div class="col-lg-6 col-xs-12 text-center">
+        <div class="service-box">
+
+          <i class="fa fa-5x fa-cogs text-primary sr-icons"></i>
+          <!-- <img src="img/2.jpg" class="img-reponsive img-circle sr-icons" style="widht: 250px; height: 250px" alt="" /> -->
+          <h3>Smart analisys</h3>
+          <p class="text-muted">Our website algorithm helps you find the job opportunity that matches most with your profile</p>
+        </div>
+      </div>
+
+      <div class="col-lg-6 col-xs-12 text-center">
+        <div class="service-box">
+
+          <i class="fa fa-5x fa-paper-plane-o text-primary sr-icons"></i>
+          <!-- <img src="img/3.jpg" class="img-reponsive img-circle sr-icons" style="widht: 250px; height: 250px" alt="" /> -->
+          <h3>Easy navigation</h3>
+          <p class="text-muted">JobFinder is designed to be as simple and functional as possible making the experience of finding a job or a employee more practical</p>
+        </div>
+      </div>
+      <div class="col-lg-6 col-xs-12 text-center">
+        <div class="service-box">
+
+          <i class="fa fa-5x fa-user-secret text-primary sr-icons"></i>
+          <!-- <img src="img/4.jpg" class="img-reponsive img-circle sr-icons" style="widht: 250px; height: 250px" alt="" /> -->
+          <h3>Safety is the Word!</h3>
+          <p class="text-muted">We have tools to ensure that every profile is real and safe both for the employee and for the companie</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="join-us"> <!-- class .bg-dark removida -->
+    <div class="container text-center">
+        <div class="call-to-action">
+          <!--<img src="img/JoinUs.jpg" style="height:100px;width: 100px" />-->
+            <h2>Like it?</h2>
+            <a ng-click="go('/auth/login')" class="btn btn-default btn-xl sr-button">Join us!</a>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 text-center">
+                <h2 class="section-heading">Let's Get In Touch!</h2>
+                <hr class="primary">
+                <p>Ready to start your new life with us? That's great! Give us a call or send us an email if you have any suggestions or doubts!</p>
+            </div>
+            <div class="col-lg-4 col-lg-offset-2 text-center">
+                <i class="fa fa-phone fa-3x sr-contact"></i>
+                <p><strong>Phone:</strong>(31) 8607-3148</p>
+            </div>
+            <div class="col-lg-4 text-center">
+                <i class="fa fa-envelope-o fa-3x sr-contact"></i>
+                <p><a href="mailto:marcelolima381@gmail.com">contact@jobfinder.com</a></p>
+            </div>
+        </div>
+    </div>
+</section>

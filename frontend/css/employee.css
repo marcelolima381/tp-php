@@ -1,0 +1,49 @@
+/*Compreende o CSS da foto de perfil*/
+div.photo-profile {
+    border-radius: 50%;
+    border: 2.2px solid white;
+    background-image: url(../img/photo-profile.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto;
+    margin-bottom: 13px;
+    transition: 0.5s;
+    margin-top: 5px;
+}
+
+/*div.photo-filter {
+    border-radius: 50%;
+    transition: 0.3s;
+}*/
+
+div.photo-profile:hover{
+    opacity: 0.8;
+}
+
+/*div.photo-filter:hover {
+    background-color: black;
+}*/
+/*Compreende o CSS da foto de perfil*/
+
+@media(min-width: 768px) {
+    div.photo-profile, nav div.photo-filter {
+        height: 135px;
+        width: 135px;
+    }
+
+    .menu-fixed-left {
+      width: 175px;
+    }
+
+}
+
+@media (max-width: 767px) {
+    div.photo-profile , nav div.photo-filter{
+        height: 125px;
+        width: 125px;
+    }
+
+    .menu-fixed-left {
+      width: 140px;
+    }
+}
