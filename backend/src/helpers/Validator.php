@@ -43,12 +43,12 @@ class Validator {
                 $json_array['birthD'] = NULL;
                 $json_array['telephone'] = NULL;
                 $json_array['emailV'] = FALSE;
-                $json_array['languages'] = NULL;
+                $json_array['languages'] = [];
                 $json_array['text'] = NULL;
-                $json_array['skills'] = NULL;
-                $json_array['contributions'] = NULL;
-                $json_array['graduation'] = NULL;
-                $json_array['experience'] = NULL;
+                $json_array['skills'] = [];
+                $json_array['contributions'] = [];
+                $json_array['graduation'] = [];
+                $json_array['experience'] = [];
                 if (Validator::checkUser($json_array)) {
                     $entidade = new \Entity\Usuario($json_array);
                 }
