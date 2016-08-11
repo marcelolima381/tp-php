@@ -32,10 +32,9 @@ class Register extends DefaultController {
                 fwrite($file2, \Helper\JsonHandler::encode($mapObj));
                 fclose($file2);
                 // \Helper\Mailer::registrationConfirm($entidade);
-            } elseif (array_key_exists("empresaId", $parsedBody)) {
+            } elseif (array_key_exists("companyId", $parsedBody)) {
                 $empresa = \Persistence\Persist::readObject($parsedBody['empresaId'], \Entity\Empresa::getExt());
                 $empresa->addVaga($entidade);
-                $empresa->flush();
             } else {
                 return $response->withStatus(400);
             }

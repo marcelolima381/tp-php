@@ -7,39 +7,30 @@ namespace Entity;
  * Esquema de arquivo é [id].vaga
  *
  * @author asantos07
-*/
+ */
 class Vaga extends Entidade {
 
-    var $titulo;
-    var $empresaId;
-    var $funcao;
-    var $salario;
+    var $name;
+    var $companyId;
+    var $text;
+    var $salary;
+    var $location;
+    var $requirements;
+    var $workload;
 
     public function __construct(array $data = array()) {
-        $this->titulo = $data->titulo;
-        $this->empresaId = $data->empresaId;
-        $this->funcao = $data->funcao;
-        $this->salario = $data->salario;
+        $this->name = $data->name;
+        $this->companyId = $data->companyId;
+        $this->text = $data->text;
+        $this->salary = $data->salary;
+        $this->location = $data->location;
+        $this->requirements = $data->requirements;
+        $this->workload = $data->workload;
         $this->id = $data->id;
     }
 
-	public static function getExt() {
-		return ".vaga";
-	}
-
-    public function mergeData($older) {
-        if (!$this->titulo) {
-            $this->titulo = $older->titulo;
-        }
-        if (!$this->empresaId) {
-            $this->empresaId = $older->empresaId;
-        }
-        if (!$this->funcao) {
-            $this->funcao = $older->funcao;
-        }
-        if (!$this->salario) {
-            $this->salario = $older->salario;
-        }
+    public static function getExt() {
+        return ".job";
     }
 
 }

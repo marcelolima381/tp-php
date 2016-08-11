@@ -65,7 +65,6 @@ class Validator {
                 }
                 break;
             case "job":
-                // TODO:
                 if (Validator::checkVaga($json_array)) {
                     $entidade = new \Entity\Vaga($json_array);
                 }
@@ -90,7 +89,7 @@ class Validator {
     }
 
     public static function checkVaga($data = array()) {
-        if (isset($data['titulo'], $data['empresaId'], $data['funcao'], $data['salario'])) {
+        if (isset($data['name'], $data['companyId'], $data['text'], $data['salary'], $data['location'], $data['requirements'], $data['workload'])) {
             return TRUE;
         } else {
             return FALSE;

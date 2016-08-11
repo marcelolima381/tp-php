@@ -39,19 +39,24 @@ class Empresa extends Entidade {
     }
 
     static public function getExt() {
-	    return ".company";
+        return ".company";
     }
-    
-    public function getLogin(){
+
+    public function getLogin() {
         return $this->login;
     }
 
-    public function getEmail(){
+    public function getEmail() {
         return $this->email;
     }
 
     public function emailVerified() {
         $this->emailV = TRUE;
+        $this->flush();
+    }
+
+    public function addVaga(\Entity\Vaga $vaga) {
+        $this->jobs[] = $vaga->getId();
         $this->flush();
     }
 
