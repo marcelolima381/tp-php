@@ -40,10 +40,6 @@ class Empresa extends Entidade {
     static public function getExt() {
 	    return ".company";
     }
-    
-    public function getLogin(){
-        return $this->login;
-    }
 
     public function getEmail(){
         return $this->email;
