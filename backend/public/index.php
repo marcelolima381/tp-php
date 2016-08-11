@@ -37,7 +37,8 @@ $app->group('/job', function () {
     $this->get('/{id:[0-9]+}', '\Controller\Job');
 });
 $app->get('/verify/{type:user|company}/{id:[0-9]+}', '\Controller\EmailVerify');
-$app->post('/search', '\Controller\Search');
+$app->post('/search/{type:user|company|job}', '\Controller\Search');
+
 /**
  * "Secure" routes
  */

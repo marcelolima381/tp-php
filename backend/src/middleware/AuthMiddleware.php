@@ -9,7 +9,7 @@ namespace Middleware;
  */
 class AuthMiddleware {
 
-    public function __invoke($request, $response, $next) {
+    public function __invoke(\Slim\Http\Request $request, \Slim\Http\Response $response, $next) {
         $body = $request->getParsedBody();
         $route = $request->getAttribute('route');
         $arguments = $route->getArguments();
@@ -27,8 +27,8 @@ class AuthMiddleware {
                     return $response->withStatus(401);
                 }
             } elseif ($name == 'patch') {
-                $entidade = \Persistence\Persist::readObject($body['empresaId'], '.' . $arguments['type']);
-                if ($entidade && $entidade->getId() == $_SESSION['userId'] && $_SESSION['userType'] == $arguments['type']) {
+                $entidade = \Helper\Validator::validadeCreate($arguments['type'], $body);
+                if ($entidade != NULL && $entidade->getId() == $_SESSION['userId'] && $_SESSION['userType'] == $arguments['type']) {
                     $next($request, $response);
                 } else {
                     return $response->withStatus(401);

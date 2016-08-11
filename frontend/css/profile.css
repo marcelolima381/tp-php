@@ -33,14 +33,7 @@ a:hover,
 a:focus {
   color: #264B99;
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
-}
+
 .name-profile h5 {
   margin-top: 10px;
   margin-bottom: -15px;
@@ -569,7 +562,13 @@ div.initial-margin {
     z-index: -1;
 }
 
+.list-group-item-heading {
+  font-size:1.8em;
+}
 
+footer.saveChanges {
+  margin-bottom: 20px;
+}
 /*Profile section*/
 /*
 

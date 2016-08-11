@@ -5,9 +5,21 @@
             <div class="well">
 
                 <h3><strong>Hi, my name is {{user.name}}</strong></h3>
-                <p>
+                <h4>
                     {{user.profiletext}}
-                </p>
+                </h4>
+
+                <!--  profile text Form -->
+                <form name="profileTextForm" ng-submit="employeeCtrl.addProfileText()">
+                  <h4>Submit a brief text about yourself</h4>
+                  <fieldset class="form-group">
+                    <textarea ng-model="employeeCtrl.profileText" class="form-control" placeholder="Write a brief text about yourself" title="profileText" required></textarea>
+                  </fieldset>
+                  <fieldset class="form-group">
+                    <input type="submit" class="btn btn-primary pull-right" value="Submit" ng-disabled="profileTextForm.$invalid"/>
+                  </fieldset>
+                </form>
+
             </div>
         </section>
     </div>

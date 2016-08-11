@@ -1,7 +1,18 @@
-<div class="col-xs-12 well text-center">
-    <h3 class="text-uppercase">analista de ti</h3>
+<div class="col-xs-12 well" ng-repeat="job in company.jobs">
+    <h3 class="text-uppercase">{{job.name}}</h3>
     <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        {{job.text}}
     </p>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Veja mais</button>
+    <ul>
+        <li><strong>Salário</strong>: {{job.salary}}</li>
+        <li><strong>Local</strong>: {{job.location}}</li>
+        <li><strong>Requisitos</strong>: {{job.requirements}}</li>
+        <li><strong>Carga horária</strong>: {{job.workload}}</li>
+    </ul>
+    <div>
+      <h4>Interessados</h4>
+      <ul>
+        <li ng-repeat="interested in job.interesteds">{{interested.name}}</li>
+      </ul>
+    </div>
 </div>

@@ -1,63 +1,87 @@
 <link rel="stylesheet" href="css/profile.css" type="text/css">
-<link rel="stylesheet" href="css/company.css" type="text/css">
-<link rel="stylesheet" href="jasny-bootstrap/css/jasny-bootstrap.css" type="text/css">
-<link rel="stylesheet" href="css/style.css" type="text/css">
+<link rel="stylesheet" href="css/employee.css" type="text/css">
+<!-- <link rel="stylesheet" href="jasny-bootstrap/css/jasny-bootstrap.css" type="text/css"> -->
+<!-- <link rel="stylesheet" href="css/style.css" type="text/css"> -->
 
-<div class="navmenu navmenu-default navmenu-fixed-left">
   <!-- <a class="navmenu-brand" href="#">LOGO</a> -->
-  <div class="photo-filter center-block">
+  <!-- <div class="photo-filter center-block">
       <div class="photo-profile center-block">
 
       </div>
   </div>
   <div class="text-center name-profile">
-      <h5>Google Inc.</h5>
+      <h5>Carmela A. Cosey</h5>
       <hr>
   </div>
   <ul class="nav navmenu-nav">
-    <!-- <li><a href="#"><p><span><i class="fa fa-book" aria-hidden="true"></i></span>Meu feed</p></a></li> -->
-    <li><a href="#"><p><span><i class="fa fa-suitcase" aria-hidden="true"></i></span>Home</p></a></a></li>
-    <li><a href="#"><p><span><i class="fa fa-building-o" aria-hidden="true"></i></span>Interessados</p></a></a></li>
+    <li><a href="#"><p><span><i class="fa fa-suitcase" aria-hidden="true"></i></span>Meu currículo</p></a></a></li>
+    <li><a href="#"><p><span><i class="fa fa-building-o" aria-hidden="true"></i></span>Propostas</p></a></a></li>
     <li><a href="#"><p><span><i class="fa fa-cog" aria-hidden="true"></i></span>Configurações</p></a></a></li>
     <li><a href="#"><p><span><i class="fa fa-sign-out" aria-hidden="true"></i></span>Sair</p></a></a></li>
-  </ul>
-</div>
+  </ul> -->
 
-<div class="canvas">
-    <div class="navbar navbar-default navbar-fixed-top">
-        <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-recalc="false" data-target=".navmenu" data-canvas=".canvas">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
         </button>
-    </div>
-    <div class="container">
+        <a class="navbar-brand" href="#">JobFinder</a>
+      </div>
 
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <form class="navbar-form navbar-left">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a ng-click="go('/auth/login')">Exit</a></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+
+  <div class="container-fluid">
+
+    <ul class="nav nav-pills" role="tablist">
+      <li role="presentation" class="" ng-class="{ 'active' : companyCtrl.isSet(1) }"><a ng-click="companyCtrl.setTab(1)">Meu perfil</a></li>
+      <li role="presentation" class="" ng-class="{ 'active' : companyCtrl.isSet(2) }"><a ng-click="companyCtrl.setTab(2)">Editar</a></li>
+    </ul>
+    <!--Eu não consegui modularizar as seções de view e edit como eu fiz na página do empregado por falta de tempo-->
+    <!--view div-->
+    <div ng-show="companyCtrl.isSet(1)">
         <div class="row initial-margin">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <section id="profile" class="well">
                     <h1>Resumo</h1>
                     <div class="well">
-                        <h2>Olá, nós somos <strong>Google Brasil</strong>.</h2>
+                        <h2>Olá, nós somos <strong>{{company.name}}</strong>.</h2>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            {{company.profiletext}}
                         </p>
                     </div>
                 </section>
             </div>
         </div>
 
-        <div class="row">
+        <div class="row" ng-show="company.jobs.length">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 well">
                 <h2 class="section-title">Oportunidades de emprego</h2>
                 <div class="col-xs-12 well">
-                    <modal-job></modal-job>
+                    <!--<modal-job></modal-job>-->
                     <job></job>
                 </div>
             </div>
         </div>
 
-        <div class="row">
+        <div class="row" ng-show="company.areas.length">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 well">
                 <h2 class="section-title">Áreas em que atuamos</h2>
                 <div class="col-xs-12 well">
@@ -68,11 +92,63 @@
 
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 well">
-                <h2 class="section-title">Prêmios</h2>
+                <h2 class="section-title">Informações básicas</h2>
                 <div class="col-xs-12 well">
-                    <company-awards></company-awards>
+                    <personal-info></personal-info>
                 </div>
             </div>
         </div>
-
     </div>
+
+    <!--Edit div-->
+    <div ng-show="companyCtrl.isSet(2)">
+      <div class="row initial-margin">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <section id="profile" class="well">
+                  <h1>Resumo</h1>
+                  <div class="well">
+                      <h2>Olá, nós somos <strong>{{company.name}}</strong>.</h2>
+                      <p>
+                          {{company.profiletext}}
+                      </p>
+                  </div>
+                  <introduction-form></introdction-form>
+              </section>
+          </div>
+      </div>
+
+      <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 well">
+              <h2 class="section-title">Oportunidades de emprego</h2>
+              <div class="col-xs-12 well">
+                  <!--<modal-job></modal-job>-->
+                  <job></job>
+                  <job-form></job-form>
+              </div>
+          </div>
+      </div>
+
+      <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 well">
+              <h2 class="section-title">Áreas em que atuamos</h2>
+              <div class="col-xs-12 well">
+                  <operational-areas></operational-areas>
+                  <operational-areas-form></operational-areas-form>
+              </div>
+          </div>
+      </div>
+
+      <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 well">
+              <h2 class="section-title">Informações básicas</h2>
+              <div class="col-xs-12 well">
+                  <personal-info-form></personal-info-form>
+              </div>
+          </div>
+      </div>
+      
+      <footer class="text-right saveChanges">
+        <a class="btn btn-primary" ng-click="update()" role="button">Salvar</a>
+      </footer>
+    </div>
+  </div>

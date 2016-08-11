@@ -26,8 +26,21 @@ class Persist {
                     $array[$c] = \Helper\JsonHandler::decode($file);
                 }
             }
+        } else {
+            return NULL;
         }
         return $array;
+    }
+    
+    static public function readObjectAll($ext){
+        $files = scandir(DB);
+        $entities = preg_grep('/' . $ext . '/', $files);
+        $results = array();
+        foreach ($entities as $file) {
+            $content = file_get_contents(DB . $file);
+            $results[] = \Helper\JsonHandler::decode($content);
+        }
+        return $results;
     }
 
     static public function writeObject($object) {
