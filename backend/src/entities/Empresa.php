@@ -12,11 +12,10 @@ class Empresa extends Entidade {
 
     var $name;
     var $email;
-    var $passwd;
-    var $descricao;
-    var $area;
-    var $cnpj;
-    var $telefone;
+    var $profiletext;
+    var $areas;
+    var $location;
+    var $phone;
     var $emailV;
 
     /**
@@ -29,12 +28,12 @@ class Empresa extends Entidade {
         $this->name = $data['name'];
         $this->email = $data['email'];
         $this->passwd = $data['passwd'];
-        $this->descricao = $data['descricao'];
+        $this->profiletext = $data['profiletext'];
         $this->id = $data['id'];
-        $this->area = $data['area'];
-        $this->cnpj = $data['cnpj'];
-        $this->telefone = $data['telefone'];
-        $this->vagas = [];
+        $this->areas = $data['areas'];
+        $this->location = $data['location'];
+        $this->phone = $data['phone'];
+        $this->jobs = [];
         $this->emailV = false;
     }
 
