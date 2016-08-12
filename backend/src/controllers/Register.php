@@ -13,13 +13,11 @@ class Register extends DefaultController {
         $parsedBody = $request->getParsedBody();
         $parsedBody['id'] = \Persistence\AutoIncrement::get($args['type']);
         $entidade = \Helper\Validator::validadeCreateBasic($args['type'], $parsedBody);
-        echo 'arg';
         if ($entidade == null) {
             return $response->withStatus(400);
         } elseif ($args['type'] != 'job' && $this->emailBelongs($parsedBody['id'], $parsedBody['email'])) {
             return $response->withStatus(409);
         } else {
-            echo 'arg4';
             if (array_key_exists("passwd", $parsedBody)) {
                 // Cria o arquivo de credencial (passwd + login)
                 $credfile = md5($entidade->id) . md5($entidade->getExt());
