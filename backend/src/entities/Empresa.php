@@ -16,7 +16,6 @@ class Empresa extends Entidade {
     var $areas;
     var $location;
     var $phone;
-    var $emailV;
 
     /**
      *
@@ -34,20 +33,14 @@ class Empresa extends Entidade {
         $this->location = $data['location'];
         $this->phone = $data['phone'];
         $this->jobs = [];
-        $this->emailV = false;
     }
 
     static public function getExt() {
 	    return ".company";
     }
 
-    public function getEmail(){
-        return $this->email;
-    }
-
-    public function emailVerified() {
-        $this->emailV = TRUE;
-        $this->flush();
+    public function getEmail() {
+	    return $this->email;
     }
 
 }

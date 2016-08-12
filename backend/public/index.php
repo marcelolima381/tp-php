@@ -53,4 +53,9 @@ $app->post('/alter/{type:user|company|job}', '\Controller\Alter')->setName('patc
  */
 $app->post('/login', '\Controller\Login');
 
+/**
+ * Rota de Logout
+ */
+$app->get('/logout', '\Controller\Logout');
+
 $app->run();
