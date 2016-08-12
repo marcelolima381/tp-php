@@ -47,12 +47,12 @@ class Company {
     }
 
     /**
-     * Retorna uma Entidade com o ID 
-     * 
+     * Retorna uma Entidade com o ID
+     *
      * @param int $id
-     * @return mixed 
+     * @return mixed
      */
-    private function getById(int $id) {
+    private function getById($id) {
         $company = \Persistence\Persist::readObject($id, \Entity\Empresa::getExt());
         if ($company) {
             return $company;

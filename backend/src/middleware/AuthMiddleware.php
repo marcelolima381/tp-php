@@ -30,7 +30,13 @@ class AuthMiddleware {
                 if (($body['id'] == $_SESSION['userId'] && $_SESSION['userType'] == $arguments['type']) || (array_key_exists('companyId', $body) && $body['companyId'] == $_SESSION['userId'])) {
                     $next($request, $response);
                 } else {
-                    return $response->withStatus(401)->withJson($entidade);
+                    return $response->withStatus(401);
+                }
+            }elseif($name == 'applyJob'){
+                if($body['id'] == $_SESSION['userId'] && $_SESSION['userType'] == 'user'){
+                    $next($request, $response);
+                } else {
+                    return $response->withStatus(401);
                 }
             }
         }

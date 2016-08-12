@@ -7,11 +7,19 @@
             "name": "Ariel Santos",
             "email": "as-ariel@outlook.com",
             "homepage": "http://asantos07.github.com",
-            "role": "Developer"
+            "role": "Engenheiro de Backend"
         },
         {
             "name": "Henzo",
             "role": "Morgador"
+        },
+        {
+            "name": "Augusto",
+            "role": "Inutir"
+        },
+        {
+            "name": "Celim",
+            "role": "Engenheiro de Frontend"
         }
     ],
     "require" : {

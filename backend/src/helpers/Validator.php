@@ -11,7 +11,7 @@ class Validator {
 
     /**
      * Cria uma entidade sem preencher nenhum campo a mais.
-     * 
+     *
      * @param string $type
      * @param array $json_array
      * @return \Entity\Entidade
@@ -42,7 +42,7 @@ class Validator {
 
     /**
      * Cria uma entidade, preenchendo os campos não-obrigatórios.
-     * 
+     *
      * @param string $type
      * @param array $json_array
      * @return \Entity\Entidade
@@ -56,7 +56,6 @@ class Validator {
             case "user":
                 $json_array['birthD'] = NULL;
                 $json_array['telephone'] = NULL;
-                $json_array['emailV'] = FALSE;
                 $json_array['languages'] = [];
                 $json_array['text'] = NULL;
                 $json_array['skills'] = [];
@@ -72,8 +71,7 @@ class Validator {
                 $json_array['areas'] = [];
                 $json_array['location'] = NULL;
                 $json_array['phone'] = NULL;
-                $json_array['emailV'] = FALSE;
-		$json_array['jobs'] = [];
+		        $json_array['jobs'] = [];
                 if (Validator::checkEmpresa($json_array)) {
                     $entidade = new \Entity\Empresa($json_array);
                 }
@@ -87,7 +85,7 @@ class Validator {
     }
 
     /**
-     * 
+     *
      * @param array $data
      * @return boolean
      */
@@ -100,12 +98,12 @@ class Validator {
     }
 
     /**
-     * 
+     *
      * @param array $data
      * @return boolean
      */
     public static function checkEmpresa(array $data) {
-    	//echo json_encode($data);
+    	// echo json_encode($data);
         if(array_key_exists('name', $data) && array_key_exists('email', $data) && array_key_exists('passwd', $data) && array_key_exists('profiletext', $data) && array_key_exists('areas', $data) && array_key_exists('location', $data) && array_key_exists('phone', $data) && array_key_exists('id', $data) && array_key_exists('jobs', $data)){
              return TRUE;
         } else {
@@ -114,7 +112,7 @@ class Validator {
     }
 
     /**
-     * 
+     *
      * @param array $data
      * @return boolean
      */

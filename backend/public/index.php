@@ -58,4 +58,9 @@ $app->post('/login', '\Controller\Login');
  */
 $app->get('/logout', '\Controller\Logout');
 
+/**
+ * Rota de cadastro em vaga
+ */
+$app->get('/applyjob/{id:[0-9]+}', '\Controller\ApplyJob')->setName('applyJob')->add(new \Middleware\AuthMiddleware());
+
 $app->run();
