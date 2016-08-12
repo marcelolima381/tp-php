@@ -1,0 +1,26 @@
+<!--  job Form -->
+<form name="jobForm" ng-submit="companyCtrl.addJob()">
+  <h4>Submit a job</h4>
+  <fieldset class="form-group">
+    <textarea ng-model="companyCtrl.job.name" class="form-control" placeholder="Write the job name" title="name" required></textarea>
+  </fieldset>
+  <fieldset class="form-group">
+    <textarea ng-model="companyCtrl.job.text" class="form-control" placeholder="Write a brief description about the job" title="text" required></textarea>
+  </fieldset>
+  <fieldset class="form-group">
+    <textarea ng-model="companyCtrl.job.salary" class="form-control" placeholder="Write the salary of the job" title="salary" required></textarea>
+  </fieldset>
+  <fieldset class="form-group">
+    <textarea ng-model="companyCtrl.job.location" class="form-control" placeholder="Write the location of the job" title="location" required></textarea>
+  </fieldset>
+  <fieldset class="form-group">
+    <textarea ng-model="companyCtrl.job.requirements" class="form-control" placeholder="Write the job requirements" title="requirements" required></textarea>
+  </fieldset>
+  <fieldset class="form-group">
+    <textarea ng-model="companyCtrl.job.workload" class="form-control" placeholder="Write the workload of the job" title="workload" required></textarea>
+  </fieldset>
+
+  <fieldset class="form-group">
+    <input type="submit" class="btn btn-primary pull-right" value="Submit" ng-disabled="jobForm.$invalid"/>
+  </fieldset>
+</form>

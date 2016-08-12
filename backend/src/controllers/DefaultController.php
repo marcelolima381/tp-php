@@ -10,7 +10,10 @@ namespace Controller;
 abstract class DefaultController {
 
     protected $ci;
-
+    /**
+     * 
+     * @param \Slim\Container $ci
+     */
     public function __construct(\Slim\Container $ci) {
         $this->ci = $ci;
     }

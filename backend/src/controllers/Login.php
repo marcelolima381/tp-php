@@ -37,6 +37,14 @@ class Login extends DefaultController {
         }
     }
 
+    /**
+     * Checa se a senha do usuário bate
+     * 
+     * @param int $id
+     * @param string $passwd
+     * @param string $type
+     * @return boolean
+     */
     private function checkCredential($id, $passwd, $type) {
         $typeH = md5($type);
         $idH = md5($id);
@@ -51,6 +59,12 @@ class Login extends DefaultController {
         }
     }
 
+    /**
+     * Retorna o ID associado ao email. Caso não haja retorna -1.
+     * 
+     * @param string $email
+     * @return mixed
+     */
     private function translateEmailId($email) {
         if (file_exists(LOGIN . $email)) {
             $fileObj = json_decode(file_get_contents(LOGIN . $email));
@@ -59,4 +73,5 @@ class Login extends DefaultController {
             return -1;
         }
     }
+
 }

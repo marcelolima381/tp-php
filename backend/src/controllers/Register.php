@@ -46,6 +46,13 @@ class Register extends DefaultController {
         }
     }
 
+    /**
+     * Checa se o ID está associado ao email, retorna 1 se sim e -1 se não. Caso o email não esteja cadastrado retorna 0.
+     * 
+     * @param type $id ID da entidade
+     * @param type $email Email da entidade
+     * @return int
+     */
     private function emailBelongs($id, $email) {
         if (!file_exists(LOGIN . $email)) {
             return 0;

@@ -35,10 +35,16 @@ class Empresa extends Entidade {
         $this->jobs = $data['jobs'];
     }
 
+    /**
+     * @return string Retorna ".user"
+     */
     static public function getExt() {
         return ".company";
     }
 
+    /**
+     * @return string O email associado à entidade
+     */
     public function getEmail() {
         return $this->email;
     }

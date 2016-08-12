@@ -18,7 +18,7 @@ abstract class Entidade {
     /**
      * @param array $data Array associativo com todas as propriedades da entidade
      */
-    abstract public function __construct(array $data = []);
+    abstract public function __construct(array $data);
 
     /**
      * Escreve o objeto no 'banco de dados'

@@ -29,6 +29,9 @@ class Vaga extends Entidade {
         $this->id = $data['id'];
     }
 
+    /**
+     * @return string Retorna ".user"
+     */
     public static function getExt() {
         return ".job";
     }

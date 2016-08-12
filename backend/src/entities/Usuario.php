@@ -7,7 +7,7 @@ namespace Entity;
  * Esquema de arquivo é [id].user
  * 
  * @author asantos07
-*/
+ */
 class Usuario extends Entidade {
 
     var $name;
@@ -35,15 +35,18 @@ class Usuario extends Entidade {
         $this->experience = $data['experience'];
     }
 
-	/**
-	 * @return string
-	 */
+    /**
+     * @return string Retorna ".user"
+     */
     static public function getExt() {
-	    return ".user";
+        return ".user";
     }
-    
+
+    /**
+     * @return string O email associado à entidade
+     */
     public function getEmail() {
-	    return $this->email;
+        return $this->email;
     }
 
 }

@@ -5,10 +5,10 @@ namespace Controller;
 /**
  * Description of Company
  *
- * asantos07*/
+ * asantos07 */
 class Company {
 
-	public function __invoke(\Slim\Http\Request $request, \Slim\Http\Response $response, $args) {
+    public function __invoke(\Slim\Http\Request $request, \Slim\Http\Response $response, $args) {
         if (array_key_exists("range", $args)) {
             $companies = $this->getByRange($args['range']);
             if ($companies) {
@@ -27,9 +27,10 @@ class Company {
     }
 
     /**
+     * Retorna array de Entidade se houver, se não retorna NULL
      *
-     * @param string $range
-     * @return array(Empresa) Retorna array de Empresa se houver, se não retorna NULL
+     * @param string $range No formato "N-N"
+     * @return mixed
      */
     private function getByRange($range) {
         $bounds = [];
@@ -45,17 +46,18 @@ class Company {
         }
     }
 
-	/**
-	 *
-	 * @param int $id
-	 * @return Empresa Retorna Empresa se houver, se não retorna NULL
-	 */
-	private function getById($id) {
-		$company = \Persistence\Persist::readObject($id, \Entity\Empresa::getExt());
-		if ($company) {
-			return $company;
-		} else {
-			return null;
+    /**
+     * Retorna uma Entidade com o ID 
+     * 
+     * @param int $id
+     * @return mixed 
+     */
+    private function getById(int $id) {
+        $company = \Persistence\Persist::readObject($id, \Entity\Empresa::getExt());
+        if ($company) {
+            return $company;
+        } else {
+            return null;
         }
     }
 
