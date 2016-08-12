@@ -32,7 +32,7 @@ class Empresa extends Entidade {
         $this->areas = $data['areas'];
         $this->location = $data['location'];
         $this->phone = $data['phone'];
-        $this->jobs = [];
+        $this->jobs = $data['jobs'];
     }
 
     static public function getExt() {

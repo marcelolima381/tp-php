@@ -59,7 +59,7 @@ class Validator {
                 $json_array['location'] = NULL;
                 $json_array['phone'] = NULL;
                 $json_array['emailV'] = FALSE;
-				$json_array['jobs'] = [];
+		$json_array['jobs'] = [];
                 if (Validator::checkEmpresa($json_array)) {
                     $entidade = new \Entity\Empresa($json_array);
                 }

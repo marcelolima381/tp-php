@@ -13,11 +13,13 @@ class Register extends DefaultController {
         $parsedBody = $request->getParsedBody();
         $parsedBody['id'] = \Persistence\AutoIncrement::get($args['type']);
         $entidade = \Helper\Validator::validadeCreateBasic($args['type'], $parsedBody);
+        echo 'arg';
         if ($entidade == null) {
             return $response->withStatus(400);
-        } elseif ($this->emailBelongs($parsedBody['id'], $parsedBody['email'])) {
+        } elseif ($args['type'] != 'job' && $this->emailBelongs($parsedBody['id'], $parsedBody['email'])) {
             return $response->withStatus(409);
         } else {
+            echo 'arg4';
             if (array_key_exists("passwd", $parsedBody)) {
                 // Cria o arquivo de credencial (passwd + login)
                 $credfile = md5($entidade->id) . md5($entidade->getExt());
@@ -33,7 +35,9 @@ class Register extends DefaultController {
                 fclose($file2);
                 // \Helper\Mailer::registrationConfirm($entidade);
             } elseif (array_key_exists("companyId", $parsedBody)) {
-                $empresa = \Persistence\Persist::readObject($parsedBody['empresaId'], \Entity\Empresa::getExt());
+                $empresa = \Persistence\Persist::readObject($parsedBody['companyId'], \Entity\Empresa::getExt());
+                $array = json_decode(json_encode($empresa), true);
+                $empresa = \Helper\Validator::validadeCreate('company', $array);
                 $empresa->addVaga($entidade);
             } else {
                 return $response->withStatus(400);

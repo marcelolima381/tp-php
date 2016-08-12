@@ -20,8 +20,8 @@ class AuthMiddleware {
 //            ->withHeader("Location", HOST . "/frontend/#/login");
         } else {
             if ($name == 'registerJob') {
-                $empresa = \Persistence\Persist::readObject($body['empresaId'], \Entity\Empresa::getExt());
-                if ($empresa && $empresa->getId() == $_SESSION['userId'] && $_SESSION['userType'] == 'company') {
+                $empresa = \Persistence\Persist::readObject($body['companyId'], \Entity\Empresa::getExt());
+                if ($empresa && $empresa->id == $_SESSION['userId'] && $_SESSION['userType'] == 'company') {
                     $next($request, $response);
                 } else {
                     return $response->withStatus(401);

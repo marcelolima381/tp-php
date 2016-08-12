@@ -19,14 +19,14 @@ class Vaga extends Entidade {
     var $workload;
 
     public function __construct(array $data = array()) {
-        $this->name = $data->name;
-        $this->companyId = $data->companyId;
-        $this->text = $data->text;
-        $this->salary = $data->salary;
-        $this->location = $data->location;
-        $this->requirements = $data->requirements;
-        $this->workload = $data->workload;
-        $this->id = $data->id;
+        $this->name = $data['name'];
+        $this->companyId = $data['companyId'];
+        $this->text = $data['text'];
+        $this->salary = $data['salary'];
+        $this->location = $data['location'];
+        $this->requirements = $data['requirements'];
+        $this->workload = $data['workload'];
+        $this->id = $data['id'];
     }
 
     public static function getExt() {
