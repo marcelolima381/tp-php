@@ -27,11 +27,10 @@ class AuthMiddleware {
                     return $response->withStatus(401);
                 }
             } elseif ($name == 'patch') {
-                $entidade = \Helper\Validator::validadeCreate($arguments['type'], $body);
-                if ($entidade != NULL && $entidade->getId() == $_SESSION['userId'] && $_SESSION['userType'] == $arguments['type']) {
+                if ($body['id'] == $_SESSION['userId'] && $_SESSION['userType'] == $arguments['type']) {
                     $next($request, $response);
                 } else {
-                    return $response->withStatus(401);
+                    return $response->withStatus(401)->withJson($entidade);
                 }
             }
         }

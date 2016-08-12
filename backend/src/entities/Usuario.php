@@ -14,7 +14,6 @@ class Usuario extends Entidade {
     var $birthD;
     var $email;
     var $telephone;
-    var $emailV;
     var $languages;
     var $text;
     var $skills;
@@ -28,7 +27,6 @@ class Usuario extends Entidade {
         $this->email = $data['email'];
         $this->id = $data['id'];
         $this->telephone = $data['telephone'];
-        $this->emailV = false;
         $this->languages = $data['languages'];
         $this->text = $data['text'];
         $this->skills = $data['skills'];
@@ -44,13 +42,8 @@ class Usuario extends Entidade {
 	    return ".user";
     }
     
-    public function getEmail(){
-        return $this->email;
-    }
-    
-    public function emailVerified() {
-        $this->emailV = TRUE;
-        $this->flush();
+    public function getEmail() {
+	    return $this->email;
     }
 
 }

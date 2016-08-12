@@ -12,12 +12,10 @@ class Empresa extends Entidade {
 
     var $name;
     var $email;
-    var $passwd;
-    var $descricao;
-    var $area;
-    var $cnpj;
-    var $telefone;
-    var $emailV;
+    var $profiletext;
+    var $areas;
+    var $location;
+    var $phone;
 
     /**
      *
@@ -29,30 +27,20 @@ class Empresa extends Entidade {
         $this->name = $data['name'];
         $this->email = $data['email'];
         $this->passwd = $data['passwd'];
-        $this->descricao = $data['descricao'];
+        $this->profiletext = $data['profiletext'];
         $this->id = $data['id'];
-        $this->area = $data['area'];
-        $this->cnpj = $data['cnpj'];
-        $this->telefone = $data['telefone'];
-        $this->vagas = [];
-        $this->emailV = false;
+        $this->areas = $data['areas'];
+        $this->location = $data['location'];
+        $this->phone = $data['phone'];
+        $this->jobs = [];
     }
 
     static public function getExt() {
         return ".company";
     }
 
-    public function getLogin() {
-        return $this->login;
-    }
-
     public function getEmail() {
         return $this->email;
-    }
-
-    public function emailVerified() {
-        $this->emailV = TRUE;
-        $this->flush();
     }
 
     public function addVaga(\Entity\Vaga $vaga) {
