@@ -8,11 +8,15 @@ class Persist {
      * 
      * @param Entidade $ent O objeto a ser lido
      */
-    static public function readObject($id, $ext) {
+    static public function readObject($id, $ext, $assoc = FALSE) {
         $array = null;
         if (file_exists(DB . $id . $ext)) {
             $file = file_get_contents(DB . $id . $ext);
-            $array = \Helper\JsonHandler::decode($file);
+            if ($assoc) {
+                $array = \Helper\JsonHandler::decode($file, true);
+            } else {
+                $array = \Helper\JsonHandler::decode($file);
+            }
         }
         return $array ? $array : null;
     }
@@ -31,8 +35,8 @@ class Persist {
         }
         return $array;
     }
-    
-    static public function readObjectAll($ext){
+
+    static public function readObjectAll($ext) {
         $files = scandir(DB);
         $entities = preg_grep('/' . $ext . '/', $files);
         $results = array();

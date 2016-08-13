@@ -573,6 +573,9 @@ footer.saveChanges {
 a,button {
     cursor:pointer;
 }
+#list-interest:first-child {
+  display: none;
+}
 /*Profile section*/
 /*
 

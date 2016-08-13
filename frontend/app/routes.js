@@ -30,6 +30,11 @@ angular.module("jobFinder").config(['$routeProvider', function($routeProvider){
         controller: 'companyVisitController',
         controllerAs: 'companyVisitCtrl'
     })
+    .when('/visit/employee/profile', {
+        templateUrl: 'app/templates/employeepage/visit/index.html',
+        controller: 'employeeVisitController',
+        controllerAs: 'employeeVisitCtrl'
+    })
   .otherwise({redirectTo: '/'});
 }]);
 })();

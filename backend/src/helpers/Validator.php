@@ -16,7 +16,7 @@ class Validator {
      * @param array $json_array
      * @return \Entity\Entidade
      */
-    public static function validadeCreate( $type, array $json_array) {
+    public static function validadeCreate($type, array $json_array) {
         $entidade = null;
         if ($json_array['id'] < 1) {
             return NULL;
@@ -47,7 +47,7 @@ class Validator {
      * @param array $json_array
      * @return \Entity\Entidade
      */
-    public static function validadeCreateBasic( $type, array $json_array) {
+    public static function validadeCreateBasic($type, array $json_array) {
         $entidade = null;
         if ($json_array['id'] < 1) {
             return NULL;
@@ -71,12 +71,13 @@ class Validator {
                 $json_array['areas'] = [];
                 $json_array['location'] = NULL;
                 $json_array['phone'] = NULL;
-		        $json_array['jobs'] = [];
+                $json_array['jobs'] = [];
                 if (Validator::checkEmpresa($json_array)) {
                     $entidade = new \Entity\Empresa($json_array);
                 }
                 break;
             case "job":
+                $json_array['interested'] = [];
                 if (Validator::checkVaga($json_array)) {
                     $entidade = new \Entity\Vaga($json_array);
                 }
@@ -90,7 +91,7 @@ class Validator {
      * @return boolean
      */
     public static function checkUser(array $data) {
-        if(array_key_exists('passwd', $data) && array_key_exists('name', $data) && array_key_exists('birthD', $data) && array_key_exists('email', $data) && array_key_exists('id', $data) && array_key_exists('telephone', $data) && array_key_exists('languages', $data) && array_key_exists('text', $data) && array_key_exists('skills', $data) && array_key_exists('contributions', $data) && array_key_exists('graduation', $data) && array_key_exists('experience', $data)){
+        if (array_key_exists('name', $data) && array_key_exists('birthD', $data) && array_key_exists('email', $data) && array_key_exists('id', $data) && array_key_exists('telephone', $data) && array_key_exists('languages', $data) && array_key_exists('text', $data) && array_key_exists('skills', $data) && array_key_exists('contributions', $data) && array_key_exists('graduation', $data) && array_key_exists('experience', $data)) {
             return TRUE;
         } else {
             return FALSE;
@@ -103,9 +104,9 @@ class Validator {
      * @return boolean
      */
     public static function checkEmpresa(array $data) {
-    	// echo json_encode($data);
-        if(array_key_exists('name', $data) && array_key_exists('email', $data) && array_key_exists('passwd', $data) && array_key_exists('profiletext', $data) && array_key_exists('areas', $data) && array_key_exists('location', $data) && array_key_exists('phone', $data) && array_key_exists('id', $data) && array_key_exists('jobs', $data)){
-             return TRUE;
+        // echo json_encode($data);
+        if (array_key_exists('name', $data) && array_key_exists('email', $data) && array_key_exists('passwd', $data) && array_key_exists('profiletext', $data) && array_key_exists('areas', $data) && array_key_exists('location', $data) && array_key_exists('phone', $data) && array_key_exists('id', $data) && array_key_exists('jobs', $data)) {
+            return TRUE;
         } else {
             return FALSE;
         }
@@ -117,7 +118,7 @@ class Validator {
      * @return boolean
      */
     public static function checkVaga(array $data) {
-        if (isset($data['name'], $data['companyId'], $data['text'], $data['salary'], $data['location'], $data['requirements'], $data['workload'])) {
+        if (isset($data['interested'], $data['name'], $data['companyId'], $data['text'], $data['salary'], $data['location'], $data['requirements'], $data['workload'])) {
             return TRUE;
         } else {
             return FALSE;

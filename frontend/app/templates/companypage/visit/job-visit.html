@@ -11,11 +11,11 @@
     </ul>
     <div>
       <h4>Interessados</h4>
-      <ul>
-        <li ng-repeat="interest in job.interests">{{interest.name}}</li>
-      </ul>
+      <dl id="list-interest">
+        <dt ng-repeat="interest in job.interested track by $index"><a ng-click="goUser(interest.id)">{{interest.name}}</a></dt>
+      </dl>
     </div>
     <div class="text-center">
-      <button id="interest" ng-click="addInterest(job)" class="btn btn-default">Tenho interesse</button>
+      <button id="interest" ng-click="addInterested(job)" class="btn btn-default">Tenho interesse</button>
     </div>
 </div>

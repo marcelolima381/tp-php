@@ -17,16 +17,16 @@
       this.job.companyId = localStorage.getItem("userID");
       console.log("this.job: " + JSON.stringify(this.job));
       $http({method: 'POST', url: '/backend/public/index.php/register/job', data: JSON.stringify(this.job)}).then(function successCallback(response) {
-        console.log("job upado");
+        console.log("response: " + response);
       }, function errorCallback(response) {
         alert('ERROR! CALL THE JÃO!');
       });
       $scope.company.jobs.push(this.job);
       for (var i = 0; i < $scope.company.jobs.length; i++) {
-        console.log($scope.company.jobs[i]);
+        console.log("job[i]: " + $scope.company.jobs[i]);
       }
       this.job = {};
-      console.log($scope.company.jobs);
+      console.log("jobs: " + $scope.company.jobs);
     };
     // Adiciona área de atuação
     this.area = {};
@@ -63,13 +63,26 @@
             $scope.company.name = response.data.name;
             $scope.company.profiletext = response.data.text;
             // $scope.company.jobs = response.data.jobs;
-            console.log(response.data.jobs.length);
+            console.log("numero de jobs: " + response.data.jobs.length);
             for (var i = 0; i < response.data.jobs.length; i++) {
                 $http({
                   method: 'GET',
                   url: '/backend/public/index.php/job/' + response.data.jobs[i]
-                }).then(function successCallback(response) {
-                    $scope.company.jobs[i] = response.data;
+                }).then(function successCallback(response) { //job
+                    $scope.thisJob = response.data;
+                    $scope.company.jobs.push(response.data);
+                    for (var j = 0; j < response.data.interested.length; j++) {
+                      $http({
+                        method: 'GET',
+                        url: '/backend/public/index.php/user/' + response.data.interested[j]
+                      }).then(function successCallback(response) { //o interessado
+                          $scope.thisJob.interested.push(response.data);
+                        }, function errorCallback(response) {
+                          alert('ERROR! CALL THE JÃO!');
+                        });
+                    }
+                    console.log("numero de interessados: " + response.data.interested.length);
+                    console.log("interessados: " + JSON.stringify(response.data.interested));
                   }, function errorCallback(response) {
                     alert('ERROR! CALL THE JÃO!');
                   });
@@ -101,6 +114,10 @@
         }, function errorCallback(response) {
           alert('ERROR! CALL THE JÃO!');
         });
+      }
+      $scope.goUser = function(id) {
+        localStorage.setItem("visitUserID",id);
+        $location.path('visit/employee/profile');
       }
 
 
