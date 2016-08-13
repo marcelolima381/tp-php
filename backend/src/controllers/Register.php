@@ -33,10 +33,9 @@ class Register extends DefaultController {
                 fclose($file2);
                 // \Helper\Mailer::registrationConfirm($entidade);
             } elseif (array_key_exists("companyId", $parsedBody)) {
-                $empresa = \Persistence\Persist::readObject($parsedBody['companyId'], \Entity\Empresa::getExt());
-                $array = json_decode(json_encode($empresa), true);
-                $empresa = \Helper\Validator::validadeCreate('company', $array);
-                $empresa->addVaga($entidade);
+                $empresa = \Persistence\Persist::readObject($parsedBody['companyId'], \Entity\Empresa::getExt(), true);
+                $empresaObj = \Helper\Validator::validadeCreate('company', $empresa);
+                $empresaObj->addVaga($entidade);
             } else {
                 return $response->withStatus(400);
             }

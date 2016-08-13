@@ -16,7 +16,9 @@ class Alter extends DefaultController {
             if (!isset($parsedBody['passwd']) && $args['type'] != 'job') {
                 $parsedBody['passwd'] = NULL;
             }
-            $parsedBody['email'] = $entidade->email;
+            if(property_exists($entidade, 'email')){
+                $parsedBody['email'] = $entidade->email;
+            }
             $entidade = \Helper\Validator::validadeCreate($args['type'], $parsedBody);
             if ($entidade == NULL) {
                 return $response->withStatus(400);

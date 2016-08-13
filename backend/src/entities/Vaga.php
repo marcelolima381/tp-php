@@ -17,6 +17,7 @@ class Vaga extends Entidade {
     var $location;
     var $requirements;
     var $workload;
+    var $interested;
 
     public function __construct(array $data = array()) {
         $this->name = $data['name'];
@@ -27,6 +28,7 @@ class Vaga extends Entidade {
         $this->requirements = $data['requirements'];
         $this->workload = $data['workload'];
         $this->id = $data['id'];
+        $this->interested = $data['interested'];
     }
 
     /**
@@ -34,6 +36,23 @@ class Vaga extends Entidade {
      */
     public static function getExt() {
         return ".job";
+    }
+
+    /**
+     * Adiciona um usuário à lista de interessados
+     * 
+     * @param \Entity\Usuario $user
+     * @return boolean
+     */
+    public function addInterested(\Entity\Usuario $user) {
+        $userId = $user->getId();
+        if (array_search($userId, $this->interested) === FALSE) {
+            $this->interested[] = $userId;
+            $this->flush();
+            return TRUE;
+        }else {
+            return FALSE;
+        }
     }
 
 }
