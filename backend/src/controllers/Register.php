@@ -1,6 +1,11 @@
 <?php
 
 namespace Controller;
+use Entity\Credentials;
+use Entity\CredentialsDAO;
+use Entity\LoginMap;
+use Entity\LoginMapDAO;
+
 
 /**
  * Gerencia as rotas de criação de entidades
@@ -10,28 +15,53 @@ namespace Controller;
 class Register extends DefaultController {
 
     public function __invoke(\Slim\Http\Request $request, \Slim\Http\Response $response, $args) {
+
+        $dao = null;
+
         $parsedBody = $request->getParsedBody();
-        $parsedBody['id'] = \Persistence\AutoIncrement::get($args['type']);
+
+        //$parsedBody['id'] = \Persistence\AutoIncrement::get($args['type']);
         $entidade = \Helper\Validator::validadeCreateBasic($args['type'], $parsedBody);
+
         if ($entidade == null) {
             return $response->withStatus(400);
         } elseif ($args['type'] != 'job' && $this->emailBelongs($parsedBody['id'], $parsedBody['email'])) {
             return $response->withStatus(409);
         } else {
             if (array_key_exists("passwd", $parsedBody)) {
-                // Cria o arquivo de credencial (passwd + login)
-                $credfile = md5($entidade->id) . md5($entidade->getExt());
-                $file = fopen(CRED . $credfile, "w");
-                fwrite($file, md5($parsedBody['passwd']));
-                fclose($file);
-                // Cria o arquivo para mapear email -> id
-                $mapObj = new \stdClass();
-                $mapObj->id = $entidade->getId();
-                $mapObj->type = $args['type'];
-                $file2 = fopen(LOGIN . $entidade->getEmail(), "w");
-                fwrite($file2, \Helper\JsonHandler::encode($mapObj));
-                fclose($file2);
-                // \Helper\Mailer::registrationConfirm($entidade);
+
+                if($args['type'] == "user"){
+                    $dao = \Entity\UsuarioDAO::getInstance();
+                }
+                elseif($args['type'] == "company"){
+                    $dao = \Entity\EmpresaDAO::getInstance();
+                }
+                elseif($args['type'] == "job"){
+                    $dao = \Entity\VagaDAO::getInstance();
+                }
+                else{
+
+                }
+
+                $id = $dao->insert($entidade);
+
+                $kek['crecencial'] =  md5($id) . md5($entidade->getExt());
+                $kek['password'] = md5($parsedBody['passwd']);
+
+                $creden = new Credentials($kek);
+                $dao = CredentialsDAO::getInstance();
+                $dao->insert($creden);
+
+
+                $kek['id'] = $id;
+                $kek['type'] = $args['type'];
+                $kek['email'] = $entidade->getEmail();
+                $login_map = new LoginMap($kek);
+
+                $dao = LoginMapDAO::getInstance();
+
+                $dao->insert($login_map);
+
             } elseif (array_key_exists("companyId", $parsedBody)) {
                 $empresa = \Persistence\Persist::readObject($parsedBody['companyId'], \Entity\Empresa::getExt(), true);
                 $empresaObj = \Helper\Validator::validadeCreate('company', $empresa);

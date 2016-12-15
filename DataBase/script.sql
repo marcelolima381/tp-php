@@ -5,6 +5,28 @@ DEFAULT COLLATE utf8_general_ci;
 
 use jobfinder;
 
+DROP TABLE IF EXISTS credentials;
+CREATE TABLE IF NOT EXISTS credentials(
+
+  credencial VARCHAR(100) NOT NULL,
+  password VARCHAR(100) NOT NULL,
+
+  CONSTRAINT pk_credentials PRIMARY KEY (credencial)
+
+)DEFAULT charset = utf8;
+
+DROP TABLE IF EXISTS login_map;
+CREATE TABLE IF NOT EXISTS login_map(
+
+  id INT NOT NULL,
+  type ENUM('user','company','job') NOT NULL,
+  email VARCHAR(100) NOT NULL,
+
+  CONSTRAINT pk_login_map PRIMARY KEY (email)
+
+)DEFAULT charset = utf8;
+
+
 DROP TABLE IF EXISTS empresa;
 CREATE TABLE IF NOT EXISTS empresa(
 
@@ -15,7 +37,6 @@ CREATE TABLE IF NOT EXISTS empresa(
   profile_text TEXT,
   location VARCHAR(45),
   phone VARCHAR(45),
-  password VARCHAR(45) NOT NULL,
 
   CONSTRAINT pk_empresa PRIMARY KEY(id)
 
@@ -31,7 +52,6 @@ CREATE TABLE IF NOT EXISTS usuario(
   email VARCHAR(45) NOT NULL,
   phone VARCHAR(45),
   profile_text TEXT,
-  passord VARCHAR(45) NOT NULL,
 
   CONSTRAINT pk_usuario PRIMARY KEY(id)
 

@@ -49,9 +49,7 @@ class Validator {
      */
     public static function validadeCreateBasic($type, array $json_array) {
         $entidade = null;
-        if ($json_array['id'] < 1) {
-            return NULL;
-        }
+
         switch ($type) {
             case "user":
                 $json_array['birthD'] = NULL;
@@ -62,9 +60,9 @@ class Validator {
                 $json_array['contributions'] = [];
                 $json_array['graduation'] = [];
                 $json_array['experience'] = [];
-                if (Validator::checkUser($json_array)) {
+                //if (Validator::checkUser($json_array)) {
                     $entidade = new \Entity\Usuario($json_array);
-                }
+                //}
                 break;
             case "company":
                 $json_array['profiletext'] = NULL;
@@ -72,16 +70,19 @@ class Validator {
                 $json_array['location'] = NULL;
                 $json_array['phone'] = NULL;
                 $json_array['jobs'] = [];
-                if (Validator::checkEmpresa($json_array)) {
+                //if (Validator::checkEmpresa($json_array)) {
                     $entidade = new \Entity\Empresa($json_array);
-                }
+                //}
                 break;
             case "job":
                 $json_array['interested'] = [];
-                if (Validator::checkVaga($json_array)) {
+                //if (Validator::checkVaga($json_array)) {
                     $entidade = new \Entity\Vaga($json_array);
-                }
+                //}
         }
+
+
+
         return $entidade;
     }
 

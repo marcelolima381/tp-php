@@ -54,4 +54,133 @@ class Empresa extends Entidade {
         $this->flush();
     }
 
+    /**
+     * @return mixed
+     */
+    public function getPasswd()
+    {
+        return $this->passwd;
+    }
+
+    /**
+     * @param mixed $passwd
+     */
+    public function setPasswd($passwd)
+    {
+        $this->passwd = $passwd;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param mixed $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProfiletext()
+    {
+        return $this->profiletext;
+    }
+
+    /**
+     * @param mixed $profiletext
+     */
+    public function setProfiletext($profiletext)
+    {
+        $this->profiletext = $profiletext;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAreas()
+    {
+        return $this->areas;
+    }
+
+    /**
+     * @param mixed $areas
+     */
+    public function setAreas($areas)
+    {
+        $this->areas = $areas;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLocation()
+    {
+        return $this->location;
+    }
+
+    /**
+     * @param mixed $location
+     */
+    public function setLocation($location)
+    {
+        $this->location = $location;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * @param mixed $phone
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+    }
+
+    /**
+     * @return array
+     */
+    public function getJobs()
+    {
+        return $this->jobs;
+    }
+
+    /**
+     * @param array $jobs
+     */
+    public function setJobs($jobs)
+    {
+        $this->jobs = $jobs;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+
 }

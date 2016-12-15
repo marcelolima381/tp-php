@@ -49,4 +49,165 @@ class Usuario extends Entidade {
         return $this->email;
     }
 
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param mixed $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBirthD()
+    {
+        return $this->birthD;
+    }
+
+    /**
+     * @param mixed $birthD
+     */
+    public function setBirthD($birthD)
+    {
+        $this->birthD = $birthD;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTelephone()
+    {
+        return $this->telephone;
+    }
+
+    /**
+     * @param mixed $telephone
+     */
+    public function setTelephone($telephone)
+    {
+        $this->telephone = $telephone;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLanguages()
+    {
+        return $this->languages;
+    }
+
+    /**
+     * @param mixed $languages
+     */
+    public function setLanguages($languages)
+    {
+        $this->languages = $languages;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getText()
+    {
+        return $this->text;
+    }
+
+    /**
+     * @param mixed $text
+     */
+    public function setText($text)
+    {
+        $this->text = $text;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSkills()
+    {
+        return $this->skills;
+    }
+
+    /**
+     * @param mixed $skills
+     */
+    public function setSkills($skills)
+    {
+        $this->skills = $skills;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getContributions()
+    {
+        return $this->contributions;
+    }
+
+    /**
+     * @param mixed $contributions
+     */
+    public function setContributions($contributions)
+    {
+        $this->contributions = $contributions;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGraduation()
+    {
+        return $this->graduation;
+    }
+
+    /**
+     * @param mixed $graduation
+     */
+    public function setGraduation($graduation)
+    {
+        $this->graduation = $graduation;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getExperience()
+    {
+        return $this->experience;
+    }
+
+    /**
+     * @param mixed $experience
+     */
+    public function setExperience($experience)
+    {
+        $this->experience = $experience;
+    }
+
+
 }
