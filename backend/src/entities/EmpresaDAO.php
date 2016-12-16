@@ -61,7 +61,19 @@ class EmpresaDAO implements DefaultDAO
 
     public function getById($object)
     {
-        // TODO: Implement getById() method.
+        $connection = ConnectionFactory::getConnection();
+
+        $query = "SELECT * FROM empresa WHERE id = $object";
+
+        $resultado = mysqli_query($connection,$query);
+
+        $resultado = mysqli_query($connection,$query);
+
+        $data = null;
+
+        $data = mysqli_fetch_object($resultado);
+
+        return $data;
     }
 
     public function getByIdReduzido($object)

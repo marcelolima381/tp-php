@@ -2,6 +2,9 @@
 
 namespace Persistence;
 
+use Entity\EmpresaDAO;
+use Entity\UsuarioDAO;
+
 class Persist {
 
     /**
@@ -9,16 +12,17 @@ class Persist {
      * @param Entidade $ent O objeto a ser lido
      */
     static public function readObject($id, $ext, $assoc = FALSE) {
-        $array = null;
-        if (file_exists(DB . $id . $ext)) {
-            $file = file_get_contents(DB . $id . $ext);
-            if ($assoc) {
-                $array = \Helper\JsonHandler::decode($file, true);
-            } else {
-                $array = \Helper\JsonHandler::decode($file);
-            }
-        }
-        return $array ? $array : null;
+
+        $dao = null;
+
+        if($ext == ".user")
+            $dao = UsuarioDAO::getInstance();
+        elseif($ext == ".company")
+            $dao = EmpresaDAO::getInstance();
+
+        $user = $dao->getById($id);
+
+        return $user;
     }
 
     static public function readObjectRange($upper, $lower, $ext) {

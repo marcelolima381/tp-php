@@ -17,7 +17,9 @@ class Company {
                 return $response->withStatus(404);
             }
         } elseif (array_key_exists("id", $args)) {
+
             $company = $this->getById($args['id']);
+
             if ($company) {
                 return $response->withJson($company);
             } else {

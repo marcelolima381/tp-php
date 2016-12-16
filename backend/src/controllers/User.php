@@ -10,15 +10,19 @@ namespace Controller;
 class User extends DefaultController {
 
     public function __invoke(\Slim\Http\Request $request, \Slim\Http\Response $response, $args) {
+
         if (array_key_exists("range", $args)) {
             $users = $this->getByRange($args['range']);
+
             if ($users) {
                 return $response->withJson($users);
             } else {
                 return $response->withStatus(404);
             }
         } elseif (array_key_exists("id", $args)) {
+
             $user = $this->getById($args['id']);
+
             if ($user) {
                 return $response->withJson($user);
             } else {
@@ -53,6 +57,7 @@ class User extends DefaultController {
      */
     private function getById($id) {
         $user = \Persistence\Persist::readObject($id, \Entity\Usuario::getExt());
+
         if ($user) {
             return $user;
         } else {

@@ -35,11 +35,7 @@ class Login extends DefaultController {
         }
         $userId = $userIdType->id;
 
-        //return $userId;
-
         $logged = $this->checkCredential($userId, $cred['passwd'], $ext);
-
-
 
         if ($logged) {
             session_start();
