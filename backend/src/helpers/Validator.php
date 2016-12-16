@@ -18,24 +18,22 @@ class Validator {
      */
     public static function validadeCreate($type, array $json_array) {
         $entidade = null;
-        if ($json_array['id'] < 1) {
-            return NULL;
-        }
+
         switch ($type) {
             case "user":
-                if (Validator::checkUser($json_array)) {
+        //        if (Validator::checkUser($json_array)) {
                     $entidade = new \Entity\Usuario($json_array);
-                }
+          //      }
                 break;
             case "company":
-                if (Validator::checkEmpresa($json_array)) {
+            //    if (Validator::checkEmpresa($json_array)) {
                     $entidade = new \Entity\Empresa($json_array);
-                }
+              //  }
                 break;
             case "job":
-                if (Validator::checkVaga($json_array)) {
+                //if (Validator::checkVaga($json_array)) {
                     $entidade = new \Entity\Vaga($json_array);
-                }
+                //}
         }
         return $entidade;
     }

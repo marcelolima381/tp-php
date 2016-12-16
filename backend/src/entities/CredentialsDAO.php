@@ -41,7 +41,9 @@ class CredentialsDAO implements DefaultDAO
 
     public function update($object)
     {
-        // TODO: Implement update() method.
+        $connection = ConnectionFactory::getConnection();
+
+        $query = "UPDATE credentials SET = ";
     }
 
     public function delete($object)
