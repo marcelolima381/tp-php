@@ -23,14 +23,14 @@
   </div><!-- /.container-fluid -->
 </nav>
 
-<div class="container" style="margin-top: 5%">
-  <div class="row">
+<div class="container">
+  <!-- <div class="row">
     <div class="col-xs-offset-3 col-xs-6">
       <h1 class="well text-center">Entrar</h1>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-12 col-md-offset-3 col-md-6 well">
+  </div> -->
+  <div class="row center">
+    <div class="col-xs-12 col-md-6 well">
       <form name="loginForm" ng-submit="submitLoginForm(loginForm.$valid)" novalidate>
 
         <!-- email -->
@@ -45,11 +45,11 @@
             <input type="password" name="passwd" class="form-control" ng-model="login.passwd"required>
         </div>
 
-        <div class="">
+        <!-- <div class="">
           <pre>
             <pre>login = {{login | json}}</pre>
           </pre>
-        </div>
+        </div> -->
 
         <!--submit button-->
         <button type="submit" class="btn btn-primary" ng-disabled="loginForm.$invalid">Submit</button>
