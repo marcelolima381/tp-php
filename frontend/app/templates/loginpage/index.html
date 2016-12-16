@@ -11,45 +11,32 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" ng-click="go('/')">JobFinder</a>
-      <!--<a href="#"><i class="fa fa-2x fa-bars" id="toggle-button" aria-hidden="true"></i></a> O BOTÃO DE TOGGLE TEM QUE FICAR NO CONTAINER -->
     </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav nav-pills navbar-nav navbar-right" role="tablist">
-        <li role="presentation" class="navbar-notifications"><a ng-click="go('/auth/register')">Registrar</a></li>
+        <li role="presentation" class="navbar-notifications"><a ng-click="go('/auth/register')">Register</a></li>
       </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+    </div>
+  </div>
 </nav>
 
 <div class="container">
-  <!-- <div class="row">
-    <div class="col-xs-offset-3 col-xs-6">
-      <h1 class="well text-center">Entrar</h1>
-    </div>
-  </div> -->
   <div class="row center">
     <div class="col-xs-12 col-md-6 well">
       <form name="loginForm" ng-submit="submitLoginForm(loginForm.$valid)" novalidate>
 
         <!-- email -->
         <div class="form-group">
-          <label>Email</label>
+          <label>E-mail</label>
           <input type="text" name="email" class="form-control" ng-model="login.email" required>
         </div>
 
         <!-- senha -->
         <div class="form-group">
-            <label>Senha</label>
-            <input type="password" name="passwd" class="form-control" ng-model="login.passwd"required>
+            <label>Password</label>
+            <input type="password" name="passwd" class="form-control" ng-model="login.passwd" required>
         </div>
-
-        <!-- <div class="">
-          <pre>
-            <pre>login = {{login | json}}</pre>
-          </pre>
-        </div> -->
 
         <!--submit button-->
         <button type="submit" class="btn btn-primary" ng-disabled="loginForm.$invalid">Submit</button>
