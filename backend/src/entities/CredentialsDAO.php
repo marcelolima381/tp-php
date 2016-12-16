@@ -56,7 +56,17 @@ class CredentialsDAO implements DefaultDAO
 
     public function getById($object)
     {
-        // TODO: Implement getById() method.
+        $connection = ConnectionFactory::getConnection();
+
+        $query = "SELECT * FROM credentials WHERE credencial = '$object'";
+        //return $query;
+        $resultado = mysqli_query($connection,$query);
+
+        $data = null;
+
+        $data = mysqli_fetch_object($resultado);
+
+        return $data;
     }
 
     public function getByIdReduzido($object)

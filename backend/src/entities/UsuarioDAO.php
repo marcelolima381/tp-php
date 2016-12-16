@@ -28,10 +28,10 @@ class UsuarioDAO implements DefaultDAO
         $email = $object->getEmail();
 
         $query = "INSERT INTO usuario (name,email) VALUES('$nome','$email')";
-
+        //return $query;
         if(!mysqli_query($connection,$query)){
 
-            echo mysqli_error($connection);
+          mysqli_error($connection);
 
         }
 

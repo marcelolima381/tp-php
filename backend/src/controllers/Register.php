@@ -20,7 +20,6 @@ class Register extends DefaultController {
 
         $parsedBody = $request->getParsedBody();
 
-        //$parsedBody['id'] = \Persistence\AutoIncrement::get($args['type']);
         $entidade = \Helper\Validator::validadeCreateBasic($args['type'], $parsedBody);
 
         if ($entidade == null) {
@@ -40,8 +39,9 @@ class Register extends DefaultController {
                     $dao = \Entity\VagaDAO::getInstance();
                 }
                 else{
-
+                    return $response->withStatus(409);
                 }
+
 
                 $id = $dao->insert($entidade);
 
@@ -69,8 +69,8 @@ class Register extends DefaultController {
             } else {
                 return $response->withStatus(400);
             }
-            $entidade->flush();
-            \Persistence\AutoIncrement::increment($entidade->getExt());
+            //$entidade->flush();
+            //Persistence\AutoIncrement::increment($entidade->getExt());
             return $response->withStatus(201)->withJson($entidade);
         }
     }

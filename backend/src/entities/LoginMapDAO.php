@@ -53,7 +53,19 @@ class LoginMapDAO implements DefaultDAO
 
     public function getById($object)
     {
-        // TODO: Implement getById() method.
+        $connection = ConnectionFactory::getConnection();
+
+        $query = "SELECT * FROM login_map WHERE email = '$object'";
+
+        //return $query;
+
+        $resultado = mysqli_query($connection,$query);
+
+        $data = null;
+
+        $data = mysqli_fetch_object($resultado);
+
+        return $data;
     }
 
     public function getByIdReduzido($object)
