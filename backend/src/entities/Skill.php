@@ -14,14 +14,14 @@ class Skill
 {
     var $id;
     var $description;
-    var $year;
+    var $value;
     var $usuario_id;
 
     public function __construct($data)
     {
         $this->id = $data['id'];
         $this->description = $data['description'];
-        $this->year = $data['year'];
+        $this->value = $data['value'];
         $this->usuario_id = $data['usuario_id'];
     }
 
@@ -60,17 +60,17 @@ class Skill
     /**
      * @return mixed
      */
-    public function getYear()
+    public function getValue()
     {
-        return $this->year;
+        return $this->value;
     }
 
     /**
-     * @param mixed $year
+     * @param mixed $value
      */
-    public function setYear($year)
+    public function setValue($value)
     {
-        $this->year = $year;
+        $this->value = $value;
     }
 
     /**

@@ -8,6 +8,7 @@
 
 namespace Entity;
 
+//TODO: GraduationDAO
 
 class Graduation
 {
