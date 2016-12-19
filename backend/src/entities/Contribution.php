@@ -8,7 +8,6 @@
 
 namespace Entity;
 
-//TODO: ContributionDAO
 
 class Contribution
 {

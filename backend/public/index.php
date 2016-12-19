@@ -63,4 +63,17 @@ $app->get('/logout', '\Controller\Logout');
  */
 $app->post('/applyjob/{id:[0-9]+}', '\Controller\ApplyJob')->setName('applyJob')->add(new \Middleware\AuthMiddleware());
 
+$app->post('/testInsertContribution',function(Request $request,Response $response){
+
+    $contribution = $request->getParsedBody();
+
+    $contribution = new \Entity\Contribution($contribution);
+
+    $dao = \Entity\ContributionDAO::getInstance();
+
+    $contribution = $dao->insert($contribution);
+
+    return $response->withJson($contribution);
+});
+
 $app->run();
