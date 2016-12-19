@@ -43,6 +43,19 @@ class ContributionDAO implements DefaultDAO
     public function update($object)
     {
         // TODO: Implement update() method.
+        $connection = ConnectionFactory::getConnection();
+
+        $id = $object->getId();
+        $description = $object->getDescription();
+
+        $query = "UPDATE contribution SET description = '$description' WHERE id = $id";
+
+
+        if(!mysqli_query($connection,$query)){
+            return mysqli_error($connection);
+        }
+
+        return $object;
     }
 
     public function delete($object)
