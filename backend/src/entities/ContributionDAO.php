@@ -12,6 +12,20 @@ namespace Entity;
 class ContributionDAO implements DefaultDAO
 {
 
+    public function trataException($erro){
+
+        if($erro == "Cannot add or update a child row: a foreign key constraint fails (`jobfinder`.`contribution`, CONSTRAINT `fk_contribution_usuario` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`) ON DELETE CASCADE)"){
+            throw new \Exception("Usuario não existente");
+        }
+        elseif($erro == "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''')' at line 1"){
+            throw new \Exception("Sem id");
+        }
+        elseif($erro == "Erro na atualização"){
+            throw new \Exception("Erro na atualização");
+        }
+    }
+
+
     public static function getInstance() {
         static $instance = null;
         if (null === $instance) {
@@ -22,20 +36,27 @@ class ContributionDAO implements DefaultDAO
 
     public function insert($object)
     {
-        $connection = ConnectionFactory::getConnection();
 
-        $usuario_id = $object->getUsuarioId();
-        $description = $object->getDescription();
+        try{
+            $connection = ConnectionFactory::getConnection();
 
-        $query = "INSERT INTO contribution (usuario_id,description) VALUES($usuario_id,'$description')";
+            $usuario_id = $object->getUsuarioId();
+            $description = $object->getDescription();
 
-        if(!mysqli_query($connection,$query)){
-            echo mysqli_error($connection);
+            $query = "INSERT INTO contribution (usuario_id,description) VALUES($usuario_id,'$description')";
+
+            if(!mysqli_query($connection,$query)){
+
+                $this->trataException(mysqli_error($connection));
+            }
+
+            $object->setId(mysqli_insert_id($connection));
+            $connection->close();
+
         }
-
-        $object->setId(mysqli_insert_id($connection));
-
-        $connection->close();
+        catch(\Exception $e){
+            return $e->getMessage();
+        }
 
         return $object;
     }
@@ -43,16 +64,26 @@ class ContributionDAO implements DefaultDAO
     public function update($object)
     {
 
-        $connection = ConnectionFactory::getConnection();
+        try{
+            $connection = ConnectionFactory::getConnection();
 
-        $id = $object->getId();
-        $description = $object->getDescription();
+            $id = $object->getId();
+            $description = $object->getDescription();
 
-        $query = "UPDATE contribution SET description = '$description' WHERE id = $id";
+            $query = "UPDATE contribution SET description = '$description' WHERE id = $id";
 
+            mysqli_query($connection,$query);
 
-        if(!mysqli_query($connection,$query)){
-            return mysqli_error($connection);
+            if(mysqli_error($connection)){
+                $this->trataException(mysqli_error($connection));
+            }
+            elseif(mysqli_affected_rows($connection) == 0){
+                $this->trataException("Erro na atualização");
+            }
+
+        }
+        catch(\Exception $e){
+            return $e->getMessage();
         }
 
         return $object;
