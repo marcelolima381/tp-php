@@ -63,7 +63,7 @@ class UsuarioDAO implements DefaultDAO
 
         $query = "SELECT * FROM usuario WHERE id = $object";
 
-        $resultado = mysqli_query($connection,$query);
+        //$resultado = mysqli_query($connection,$query);
 
         $resultado = mysqli_query($connection,$query);
 

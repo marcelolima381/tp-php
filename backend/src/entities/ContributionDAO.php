@@ -42,7 +42,7 @@ class ContributionDAO implements DefaultDAO
 
     public function update($object)
     {
-        // TODO: Implement update() method.
+
         $connection = ConnectionFactory::getConnection();
 
         $id = $object->getId();
@@ -60,17 +60,50 @@ class ContributionDAO implements DefaultDAO
 
     public function delete($object)
     {
-        // TODO: Implement delete() method.
+        $connection = ConnectionFactory::getConnection();
+
+        $id = $object->getId();
+
+        $query = "DELETE FROM contribution WHERE id = $id";
+
+        if(!mysqli_query($connection,$query)){
+            return mysqli_error($connection);
+        }
+
+        return $object;
     }
 
     public function deleteAll()
     {
-        // TODO: Implement deleteAll() method.
+        $connection = ConnectionFactory::getConnection();
+
+        $query = "DELETE FROM contribution";
+
+        if(!mysqli_query($connection, $query)){
+            return mysqli_error($connection);
+        }
+
     }
 
     public function getById($object)
     {
-        // TODO: Implement getById() method.
+        $connection = ConnectionFactory::getConnection();
+
+        $id = $object->getId();
+
+        $query = "SELECT * FROM contribution WHERE id = $id";
+
+        $resultado = mysqli_query($connection,$query);
+
+        if(!$resultado){
+            return mysqli_error($connection);
+        }
+
+        $data = null;
+
+        $data = mysqli_fetch_object($resultado);
+
+        return $data;
     }
 
     public function getByIdReduzido($object)
@@ -80,7 +113,25 @@ class ContributionDAO implements DefaultDAO
 
     public function getAll()
     {
-        // TODO: Implement getAll() method.
+        $connection = ConnectionFactory::getConnection();
+
+        $query = "SELECT * FROM contribution";
+
+        $resultado = mysqli_query($connection,$query);
+
+        if(!$resultado){
+            return mysqli_error($connection);
+        }
+
+        $data = null;
+
+        while ($row = $resultado->fetch_assoc()){
+
+            $data[] = $row;
+
+        }
+
+        return $data;
     }
 
     public function getAllReduzido()
@@ -88,4 +139,28 @@ class ContributionDAO implements DefaultDAO
         // TODO: Implement getAllReduzido() method.
     }
 
+    public function getAllFromUser($object){
+
+        $connection = ConnectionFactory::getConnection();
+
+        $usuario_id = $object->getUsuarioId();
+
+        $query = "SELECT * FROM contribution WHERE usuario_id = $usuario_id";
+
+        $resultado = mysqli_query($connection,$query);
+
+        if(!$resultado){
+            return mysqli_error($connection);
+        }
+
+        $data = null;
+
+        while ($row = $resultado->fetch_assoc()){
+
+            $data[] = $row;
+
+        }
+
+        return $data;
+    }
 }

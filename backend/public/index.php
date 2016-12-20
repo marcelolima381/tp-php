@@ -89,6 +89,63 @@ $app->post('/testUpdateContribution',function(Request $request,Response $respons
 
     return $response->withJson($contribution);
 });
+
+
+$app->post('/testDeleteContribution',function(Request $request,Response $response){
+
+    $contribution = $request->getParsedBody();
+
+    $contribution = new \Entity\Contribution($contribution);
+
+    $dao = \Entity\ContributionDAO::getInstance();
+
+    $contribution = $dao->delete($contribution);
+
+    return $response->withJson($contribution);
+});
+
+$app->post('/testDeleteAllContribution',function(Request $request,Response $response){
+
+    $dao = \Entity\ContributionDAO::getInstance();
+
+    $dao->deleteAll();
+});
+
+$app->post('/testGetByIdContribution',function(Request $request,Response $response){
+
+    $contribution = $request->getParsedBody();
+
+    $contribution = new \Entity\Contribution($contribution);
+
+    $dao = \Entity\ContributionDAO::getInstance();
+
+    $contribution = $dao->getById($contribution);
+
+    return $response->withJson($contribution);
+});
+
+$app->post('/testGetAllContribution',function(Request $request,Response $response){
+
+
+    $dao = \Entity\ContributionDAO::getInstance();
+
+    $contribution = $dao->getAll();
+
+    return $response->withJson($contribution);
+});
+
+$app->post('/testGetAllFromUserContribution',function(Request $request,Response $response){
+
+    $contribution = $request->getParsedBody();
+
+    $contribution = new \Entity\Contribution($contribution);
+
+    $dao = \Entity\ContributionDAO::getInstance();
+
+    $contribution = $dao->getAllFromUser($contribution);
+
+    return $response->withJson($contribution);
+});
 ////////////////////////////////////////////////////////////////////////
 
 $app->run();
