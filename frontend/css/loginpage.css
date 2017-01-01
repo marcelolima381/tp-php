@@ -1,6 +1,11 @@
 body {
+  height: 100vh;
   background-image: url('../img/1.jpg');
   background-repeat: no-repeat;
+  background-position: center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
 }
 
@@ -10,4 +15,43 @@ ul.nav li.navbar-notifications {
 
 ul.nav li.navbar-notifications:hover {
   cursor: pointer;
+}
+
+.center{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-submit {
+    margin-top: 3vh;
+}
+
+register-user, register-company {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+}
+
+/*@media*/
+@media(max-width:767px){
+  register-user{
+    margin-top: 20vh;
+  }
+}
+
+@media(min-width:768px){
+  register-user{
+    margin-top: 15vh;
+  }
+}
+
+@media(min-width:992px){
+
+}
+
+@media(min-width:1200px){
+
 }

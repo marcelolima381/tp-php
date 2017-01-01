@@ -1,49 +1,37 @@
-<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3 col-lg-8 col-lg-offset-2 well" ng-show="registerpgCtrl.isSet(2)">
+<div class="col-xs-12 col-sm-10 col-md-6 col-lg-6 well" ng-show="registerpgCtrl.isSet(2)">
   <form name="registerCompanyForm" ng-submit="submitCompanyForm(registerCompanyForm.$valid)" novalidate>
 
     <!-- nome -->
     <div class="form-group" ng-class="{ 'has-error' : registerCompanyForm.name.$invalid && !registerCompanyForm.name.$pristine, 'has-success' : registerCompanyForm.name.$valid }">
-        <label>Nome da empresa</label>
+        <label>Company's name</label>
         <input type="text" name="name" class="form-control" ng-model="company.name" required>
-        <p ng-show="registerCompanyForm.name.$invalid && !registerCompanyForm.name.$pristine" class="help-block">Digite o nome da empresa.</p>
+        <p ng-show="registerCompanyForm.name.$invalid && !registerCompanyForm.name.$pristine" class="help-block">Type the company name</p>
     </div>
-
-    <!-- login -->
-    <!-- <div class="form-group" ng-class="{ 'has-error' : registerCompanyForm.username.$invalid && !registerCompanyForm.username.$pristine, 'has-success' : registerCompanyForm.username.$valid }">
-        <label>Login (3 a 8 caracteres)</label>
-        <input type="text" name="username" class="form-control" ng-model="company.username" ng-minlength="3" ng-maxlength="8" required>
-        <p ng-show="registerCompanyForm.username.$error.minlength" class="help-block">Login muito curto ou inexistente.</p>
-        <p ng-show="registerCompanyForm.username.$error.maxlength" class="help-block">Login muito longo.</p>
-    </div> -->
 
     <!-- e-mail -->
     <div class="form-group" ng-class="{ 'has-error' : registerCompanyForm.email.$invalid && !registerCompanyForm.email.$pristine, 'has-success' : registerCompanyForm.email.$valid }">
-        <label>Email</label>
+        <label>E-mail</label>
         <input type="email" name="email" class="form-control" ng-model="company.email" required>
-        <p ng-show="registerCompanyForm.email.$invalid && !registerCompanyForm.email.$pristine" class="help-block">Entre com um e-mail válido.</p>
+        <p ng-show="registerCompanyForm.email.$invalid && !registerCompanyForm.email.$pristine" class="help-block">Type a valid e-mail</p>
     </div>
 
     <!-- senha -->
     <div class="form-group" ng-class="{ 'has-error' : registerCompanyForm.passwd.$invalid && !registerCompanyForm.passwd.$pristine, 'has-success' : registerCompanyForm.passwd.$valid }">
-        <label>Senha (mínimo 3 caracteres)</label>
+        <label>Password (3 characters minimum)</label>
         <input type="passwd" name="passwd" class="form-control" ng-model="company.passwd" ng-minlength="3" required>
-        <p ng-show="registerCompanyForm.passwd.$error.minlength" class="help-block">Senha muito curta ou inexistente.</p>
+        <p ng-show="registerCompanyForm.passwd.$error.minlength" class="help-block">This password is too short or doesn't exist</p>
     </div>
 
-    <!-- confirmação senha -->
-    <!-- <div class="form-group" ng-class="{ 'has-error' : (company.passwdconfirm != company.passwd && !registerCompanyForm.passwdconfirm.$pristine), 'has-success' : registerCompanyForm.passwdconfirm.$valid && company.passwdconfirm == company.passwd }">
-        <label>Senha (mínimo 3 caracteres)</label>
-        <input type="passwd" name="passwdconfirm" class="form-control" ng-model="company.passwdconfirm" required>
-        <p ng-show="company.passwdconfirm != company.passwd && !registerCompanyForm.passwdconfirm.$pristine" class="help-block">Senhas não batem.</p>
-    </div> -->
-
-    <div class="">
-      <pre>
-        <pre>company = {{company | json}}</pre>
-      </pre>
+    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+      <div class="btn-group btn-group-lg" role="group">
+        <button ng-class="{ 'active' : registerpgCtrl.isSet(1) }" type="button" class="btn btn-default" ng-click="registerpgCtrl.setTab(1)">Person</button>
+      </div>
+      <div class="btn-group btn-group-lg" role="group">
+        <button ng-class="{ 'active' : registerpgCtrl.isSet(2) }" type="button" class="btn btn-default" ng-click="registerpgCtrl.setTab(2)">Company</button>
+      </div>
     </div>
 
     <!--submit button-->
-    <button type="submit" class="btn btn-primary" ng-disabled="registerCompanyForm.$invalid">Submit</button>
+    <button type="submit" class="btn btn-primary btn-submit" ng-disabled="registerCompanyForm.$invalid">Submit</button>
   </form>
 </div>
